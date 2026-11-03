@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("anim")}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qué es el drawdown: lección gratis · CapitalZero</title>
+<meta name="description" content="Lección gratis y sin registro: qué es la peor caída (drawdown) de una inversión, cómo se calcula y por qué decide si aguantas. Con pregunta y calculadora para practicar.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="La peor caída (drawdown): lección gratis de CapitalZero">
+<meta property="og:description" content="Lección gratis y sin registro: qué es la peor caída (drawdown) de una inversión, cómo se calcula y por qué decide si aguantas. Con pregunta y calculadora para practicar.">
+<meta property="og:url" content="https://capitalzero-web.netlify.app/leccion/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f3e66'/%3E%3Cpath d='M29 17a15 15 0 1 0 0 30' fill='none' stroke='%23f4e3d1' stroke-width='7'/%3E%3Cpath d='M33 20.5h15L35 43.5h15' fill='none' stroke='%2317a2b8' stroke-width='7'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "La peor caída (drawdown)", "description": "Lección gratis y sin registro: qué es la peor caída (drawdown) de una inversión, cómo se calcula y por qué decide si aguantas. Con pregunta y calculadora para practicar.", "inLanguage": "es-ES", "educationalLevel": "Inicial", "timeRequired": "PT10M", "isAccessibleForFree": true, "learningResourceType": "Lección", "provider": {"@type": "EducationalOrganization", "name": "CapitalZero Escuela de Inversión", "url": "https://capitalzero-web.netlify.app/"}, "url": "https://capitalzero-web.netlify.app/leccion/"}</script>
+<link rel="canonical" href="/leccion/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<script>(function(){var d=document,h=d.head;d.documentElement.lang="es";d.querySelectorAll('body title,body meta[name],body meta[property],body link[rel="canonical"],body link[rel="icon"],body script[type="application/ld+json"]').forEach(function(n){h.appendChild(n)})})()</script>
+<style>
+:root {
+  --paper: #f4e3d1;
+  --paper-deep: #ecd3ba;
+  --paper-hi: #f9eee2;
+  --ink: #0f3e66;
+  --ink-soft: #3b5b78;
+  --ink-mute: #5d7189;
+  --rule: #0f3e66;
+  --rule-soft: rgba(15, 62, 102, 0.22);
+  --teal: #0a6573;
+  --teal-bright: #17a2b8;
+  --gold: #d4a574;
+  --gold-deep: #7c5228;
+  --down: #a4452c;
+  --on-ink: #f4e3d1;
+  --sel: rgba(23, 162, 184, 0.28);
+  --ed-accent: #d4a574;
+  --ed-bg: #0f3e66;
+  --ed-fg: #f4e3d1;
+  --on-teal: #ffffff;
+  --gutter: clamp(16px, 3.2vw, 40px);
+  --max: 1240px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c2338;
+    --paper-deep: #10304c;
+    --paper-hi: #12304a;
+    --ink: #f4e3d1;
+    --ink-soft: #d9c3ad;
+    --ink-mute: #b9a690;
+    --rule: #e8cfb6;
+    --rule-soft: rgba(244, 227, 209, 0.2);
+    --teal: #4cc7da;
+    --teal-bright: #4cc7da;
+    --gold: #e0b787;
+    --gold-deep: #e0b787;
+    --down: #f08a6c;
+    --on-ink: #0c2338;
+    --sel: rgba(76, 199, 218, 0.3);
+    --ed-accent: #e0b787;
+    --ed-bg: #06182a;
+    --ed-fg: #f4e3d1;
+    --on-teal: #06213a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0c2338;
+  --paper-deep: #10304c;
+  --paper-hi: #12304a;
+  --ink: #f4e3d1;
+  --ink-soft: #d9c3ad;
+  --ink-mute: #b9a690;
+  --rule: #e8cfb6;
+  --rule-soft: rgba(244, 227, 209, 0.2);
+  --teal: #4cc7da;
+  --teal-bright: #4cc7da;
+  --gold: #e0b787;
+  --gold-deep: #e0b787;
+  --down: #f08a6c;
+  --on-ink: #0c2338;
+  --sel: rgba(76, 199, 218, 0.3);
+  --ed-accent: #e0b787;
+    --ed-bg: #06182a;
+    --ed-fg: #f4e3d1;
+  --on-teal: #06213a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; scrollbar-color: var(--ink-mute) var(--paper-deep); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { font-family: "Archivo", system-ui, sans-serif; font-stretch: 100%; font-size: 18px; line-height: 1.65; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--sel); color: var(--ink); }
+a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--teal-bright); outline-offset: 3px; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.btn { display: inline-flex; align-items: center; gap: 0.6em; font: inherit; font-weight: 700; font-size: 1rem; line-height: 1.2; padding: 0.85em 1.35em; background: var(--ink); color: var(--on-ink); border: 2px solid var(--ink); text-decoration: none; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.btn:hover { background: var(--teal); border-color: var(--teal); color: var(--on-teal); }
+.btn svg { width: 1.05em; height: 1.05em; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.btn-sm { font-size: 0.88rem; padding: 0.55em 0.95em; }
+
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: var(--teal-bright); transform-origin: 0 50%; transform: scaleX(0); z-index: 60; }
+
+/* Cabecera */
+.mast { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--rule); box-shadow: 0 3px 0 var(--paper), 0 4px 0 var(--rule); margin-bottom: 4px; }
+.mast-row { display: flex; align-items: center; gap: 1.5rem; min-height: 68px; }
+.logo { font-stretch: 62%; font-weight: 800; font-size: 2.3rem; line-height: 1; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+.logo span { color: var(--teal); }
+.logo:hover { text-decoration: none; }
+.mast nav { flex: 1; }
+.mast ul { list-style: none; display: flex; gap: 0.2rem; }
+.mast li a { display: block; padding: 0.5rem 0.7rem; font-stretch: 80%; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.84rem; text-decoration: none; }
+.mast li a:hover { color: var(--teal); }
+
+/* Cabecera del artículo */
+.art-head { padding: clamp(32px, 5vw, 64px) 0 clamp(24px, 3vw, 36px); border-bottom: 4px solid var(--rule); }
+.crumbs { font-size: 0.9rem; font-weight: 700; color: var(--teal); margin-bottom: 0.9rem; }
+.crumbs a { text-decoration: none; color: var(--ink-soft); }
+.crumbs a:hover { color: var(--ink); text-decoration: underline; }
+.crumbs span { color: var(--ink-mute); margin: 0 0.3rem; }
+.art-head h1 { font-stretch: 64%; font-weight: 800; font-size: clamp(2.8rem, 7.2vw, 5.6rem); line-height: 0.94; letter-spacing: -0.012em; max-width: 18ch; text-wrap: balance; margin-bottom: 1.2rem; }
+.standfirst { font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.45; max-width: 52ch; margin-bottom: 1.2rem; }
+.byline { font-size: 0.9rem; color: var(--ink-soft); padding-top: 0.8rem; border-top: 1px solid var(--rule-soft); max-width: 72ch; }
+.byline b { color: var(--teal); font-weight: 800; }
+.part:first-child > p:first-of-type::first-letter { float: left; font-stretch: 62%; font-weight: 800; font-size: 4.4em; line-height: 0.82; margin: 0.08em 0.1em 0 0; color: var(--ink); }
+
+/* Rejilla */
+.art-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); padding-top: clamp(28px, 4vw, 48px); padding-bottom: clamp(48px, 6vw, 80px); }
+.toc { position: sticky; top: 96px; align-self: start; }
+.toc h2 { font-stretch: 75%; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; padding-bottom: 0.5rem; border-bottom: 2px solid var(--rule); }
+.toc ol { list-style: none; counter-reset: t; }
+.toc li { counter-increment: t; border-bottom: 1px solid var(--rule-soft); }
+.toc a { display: flex; gap: 0.6rem; padding: 0.55rem 0; font-size: 0.93rem; line-height: 1.35; text-decoration: none; color: var(--ink-soft); }
+.toc a::before { content: counter(t); font-stretch: 70%; font-weight: 800; color: var(--ink-mute); min-width: 1ch; }
+.toc a:hover, .toc a.on { color: var(--ink); }
+.toc a.on { font-weight: 700; }
+.toc a.on::before { color: var(--teal); }
+
+/* Texto */
+.prose { max-width: 70ch; }
+.part { padding-bottom: 2.2rem; }
+.part + .part { padding-top: 2.4rem; border-top: 1px solid var(--rule); }
+.prose h2 { font-stretch: 66%; font-weight: 800; font-size: clamp(2rem, 3.6vw, 2.7rem); line-height: 1; text-wrap: balance; margin-bottom: 1.1rem; }
+.prose h3 { font-stretch: 75%; font-weight: 800; font-size: 1.45rem; line-height: 1.15; margin: 2rem 0 0.6rem; }
+.prose h4, .box-title { font-weight: 800; font-size: 1.02rem; margin-bottom: 0.5rem; }
+.prose p { margin-bottom: 1.1rem; }
+.prose ul, .prose ol { margin: 0 0 1.1rem 1.3rem; }
+.prose li { margin: 0.35rem 0; }
+.prose li::marker { color: var(--teal); font-weight: 700; }
+.prose strong { font-weight: 700; }
+
+.note { margin: 1.6rem 0; padding: 1.1rem 1.3rem; background: var(--paper-hi); border-top: 3px solid var(--teal); }
+.note h3 { margin-top: 0; }
+.note > :last-child { margin-bottom: 0; }
+.box { margin: 1.3rem 0; padding: 1rem 0 0.2rem; border-top: 2px solid var(--rule); }
+.box ul { list-style: none; margin-left: 0; }
+.box li { padding: 0.45rem 0; margin: 0; border-bottom: 1px solid var(--rule-soft); }
+.box li:last-child { border-bottom: 0; }
+.box p:last-child { margin-bottom: 0.6rem; }
+.box-ex { background: var(--paper-hi); padding: 1rem 1.2rem 0.8rem; }
+.lesson { margin: 1.4rem 0; padding: 1rem 0 0.4rem 1.2rem; border-left: 1px solid var(--rule); }
+.lesson h3 { font-stretch: 75%; font-size: 1.3rem; line-height: 1.15; margin: 0 0 0.5rem; }
+.lesson p:last-child { margin-bottom: 0.4rem; }
+.quote { margin: 1.6rem 0; font-stretch: 70%; font-weight: 700; font-size: clamp(1.6rem, 2.8vw, 2.1rem); line-height: 1.12; color: var(--teal); text-wrap: balance; }
+.formula { margin: 1.4rem 0; padding: 1rem; text-align: center; font-stretch: 85%; font-weight: 700; font-size: 1.15rem; letter-spacing: 0.01em; border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule); background: var(--paper-hi); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0; margin: 1.2rem 0 1.4rem; border-top: 2px solid var(--rule); }
+.tile { padding: 0.8rem 0.9rem 0.8rem 0; border-bottom: 1px solid var(--rule-soft); font-size: 0.95rem; }
+.tile strong { display: block; font-stretch: 75%; font-weight: 800; font-size: 1.15rem; }
+
+.data { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.95rem; }
+.data th { text-align: left; font-stretch: 80%; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.05em; padding: 0.5rem 0.6rem 0.5rem 0; border-bottom: 2px solid var(--rule); color: var(--ink-soft); }
+.data td { padding: 0.55rem 0.6rem 0.55rem 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+.data.num td:last-child, .data.num th:last-child { text-align: right; }
+.data tr:has(strong) td { font-weight: 700; }
+.table-wrap { overflow-x: auto; }
+
+.art-cta { margin-top: 2.4rem; padding: 1.8rem; background: var(--ink); color: var(--on-ink); }
+.art-cta h2 { color: var(--on-ink); }
+.art-cta p { max-width: 54ch; }
+.art-cta .btn { background: var(--on-ink); color: var(--ink); border-color: var(--on-ink); }
+.art-cta .btn:hover { background: var(--teal-bright); border-color: var(--teal-bright); color: #06213a; }
+.art-cta ::selection { background: var(--gold); color: #0c2338; }
+.disclaimer { font-size: 0.85rem; color: var(--ink-soft); margin-top: 1.2rem; }
+
+.more { border-top: 4px solid var(--rule); padding: clamp(32px, 5vw, 56px) 0; }
+.more h2 { font-stretch: 66%; font-weight: 800; font-size: 2.4rem; line-height: 1; margin-bottom: 1.2rem; }
+.more-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
+.more-item { display: block; padding: 1.2rem 1.5rem 1.2rem 0; text-decoration: none; border-bottom: 1px solid var(--rule); }
+.more-item + .more-item { padding-left: 1.5rem; border-left: 1px solid var(--rule); }
+.more-meta { display: block; font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 0.3rem; }
+.more-meta b { color: var(--teal); }
+.more-title { display: block; font-stretch: 68%; font-weight: 800; font-size: 2rem; line-height: 1.02; }
+.more-item:hover .more-title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.12em; }
+
+.foot { border-top: 1px solid var(--rule); padding: 24px 0 40px; font-size: 0.86rem; color: var(--ink-soft); }
+.foot-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.logo-sm { font-size: 1.8rem; }
+
+@media (max-width: 900px) {
+  .art-grid { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; }
+}
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .mast nav { display: none; }
+  .mast-row { justify-content: space-between; min-height: 60px; }
+  .logo { font-size: 2rem; }
+  .more-grid { grid-template-columns: 1fr; }
+  .more-item + .more-item { padding-left: 0; border-left: 0; }
+  .art-cta { margin-left: -16px; margin-right: -16px; padding: 1.6rem 16px; }
+}
+
+/* Movimiento */
+.btn svg { transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.btn:hover svg { transform: translateX(4px); }
+.anim .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.12em 0 0.16em; margin: -0.12em 0 -0.16em; }
+.anim .w > span { display: inline-block; transform: translateY(112%); transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: calc(var(--i, 0) * 45ms + 100ms); }
+.anim .on .w > span { transform: none; }
+.anim .fade { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease-out, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0ms); }
+.anim .on .fade, .anim .on.fade { opacity: 1; transform: none; }
+.anim .art-head { border-bottom-color: transparent; position: relative; }
+.anim .art-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 4px; background: var(--rule); transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.1s cubic-bezier(0.7, 0, 0.2, 1) 0.3s; }
+.anim .art-head.on::after { transform: none; }
+.toc a { transition: color 0.2s, padding 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.toc a.on { padding-left: 0.4rem; }
+.more-title { transition: color 0.2s; }
+.more-item:hover .more-title { color: var(--teal); }
+
+/* ---------- LECCIÓN DE MUESTRA ---------- */
+.lesson-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.lesson-copy h3 { font-weight: 800; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.01em; }
+.lesson-meta { font-size: 0.9rem; color: var(--ink-soft); margin: 0.6rem 0 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+.lesson-lede { font-size: 1.2rem; line-height: 1.45; margin-bottom: 0.9rem; font-weight: 500; max-width: 46ch; }
+.lesson-copy > p:not(.lesson-meta):not(.lesson-lede) { color: var(--ink-soft); max-width: 52ch; }
+.lesson-steps { list-style: none; counter-reset: st; margin-top: 1.6rem; border-top: 2px solid var(--rule); }
+.lesson-steps li { counter-increment: st; display: flex; align-items: baseline; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid var(--rule-soft); font-size: 0.98rem; }
+.lesson-steps li::before { content: counter(st); font-stretch: 68%; font-weight: 800; font-size: 1.35rem; color: var(--teal); width: 1.1rem; }
+.lesson-steps b { margin-left: auto; font-weight: 600; font-size: 0.88rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.quiz { border: 1px solid var(--rule); border-top: 4px solid var(--rule); background: var(--paper-hi); padding: clamp(18px, 2.4vw, 30px); }
+.quiz-q { font-stretch: 75%; font-weight: 800; font-size: clamp(1.35rem, 2.2vw, 1.7rem); line-height: 1.12; max-width: 30ch; }
+.quiz-chart { margin: 1rem 0 0.4rem; }
+.quiz-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.quiz-chart figcaption { font-size: 0.78rem; color: var(--ink-mute); margin-top: 0.2rem; }
+.qc-grid line { stroke: var(--rule-soft); stroke-dasharray: 2 4; }
+.qc-ax { font-size: 12px; fill: var(--ink-mute); font-variant-numeric: tabular-nums; }
+.qc-a, .qc-b { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.qc-a { stroke: var(--teal); }
+.qc-b { stroke: var(--ink); stroke-width: 2.2; }
+.qc-la, .qc-lb { font-weight: 800; font-size: 15px; }
+.qc-la { fill: var(--teal); }
+.qc-lb { fill: var(--ink); }
+.qc-dd { opacity: 0; transition: opacity 0.5s ease-out; }
+.qc-dd line { stroke-width: 2; stroke-dasharray: 3 3; }
+.qc-dd-a { stroke: var(--teal); }
+.qc-dd-b { stroke: var(--down); }
+.qc-dd text { font-weight: 800; font-size: 14px; }
+.qc-dd-ta { fill: var(--teal); }
+.qc-dd-tb { fill: var(--down); }
+.quiz.done .qc-dd { opacity: 1; }
+.anim .qc-a, .anim .qc-b { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.5s; }
+.anim .qc-a { transition-delay: 0.8s; }
+.anim .in .qc-a, .anim .in .qc-b { stroke-dashoffset: 0; }
+.quiz fieldset { border: 0; display: grid; gap: 0; border-top: 1px solid var(--rule); margin-top: 0.8rem; }
+.quiz label { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.75rem 0.4rem; border-bottom: 1px solid var(--rule-soft); cursor: pointer; transition: background 0.2s; }
+.quiz label:hover { background: var(--paper-deep); }
+.quiz input { appearance: none; flex: none; width: 20px; height: 20px; margin-top: 0.12rem; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); display: grid; place-items: center; cursor: pointer; }
+.quiz input::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: currentColor; transform: scale(0); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.quiz input:checked::after { transform: scale(1); }
+.quiz input:focus-visible { outline: 2px solid var(--teal-bright); outline-offset: 2px; }
+.quiz label.right { background: color-mix(in srgb, var(--teal) 14%, transparent); }
+.quiz label.right input { border-color: var(--teal); color: var(--teal); }
+.quiz label.wrong { background: color-mix(in srgb, var(--down) 12%, transparent); }
+.quiz label.wrong input { border-color: var(--down); color: var(--down); }
+.quiz-out:empty { display: none; }
+.quiz-out { margin-top: 1rem; padding-top: 0.9rem; border-top: 2px solid var(--rule); }
+.quiz-out strong { display: block; font-stretch: 75%; font-size: 1.25rem; line-height: 1.15; margin-bottom: 0.3rem; }
+.quiz-out p { font-size: 0.96rem; color: var(--ink-soft); max-width: 60ch; }
+.quiz-out .next { margin-top: 0.8rem; font-size: 0.92rem; color: var(--ink); }
+.quiz-out .next a { font-weight: 700; color: var(--teal); }
+
+
+.quiz { margin: 1.4rem 0 0.6rem; }
+.recover { width: 100%; border-collapse: collapse; margin: 0.6rem 0 0.4rem; font-variant-numeric: tabular-nums; }
+.recover th, .recover td { text-align: left; padding: 0.55rem 0; border-bottom: 1px solid var(--rule-soft); }
+.recover th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); border-bottom: 2px solid var(--rule); }
+.recover td:last-child, .recover th:last-child { text-align: right; }
+.recover .dn { color: var(--down); font-weight: 700; }
+.recover .up { color: var(--teal); font-weight: 700; }
+.steps-calc { list-style: none; margin: 0.8rem 0 0; counter-reset: c; }
+.steps-calc li { counter-increment: c; display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.4rem; padding: 0.55rem 0; border-bottom: 1px solid var(--rule-soft); margin: 0; }
+.steps-calc li::before { content: counter(c); font-stretch: 68%; font-weight: 800; font-size: 1.3rem; color: var(--teal); line-height: 1.2; }
+.calc { margin: 1.4rem 0 0.6rem; border: 1px solid var(--rule); border-top: 4px solid var(--rule); background: var(--paper-hi); padding: clamp(16px, 2.4vw, 26px); }
+.calc-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.calc label { display: grid; gap: 0.3rem; font-weight: 700; font-size: 0.92rem; }
+.calc .field { display: flex; align-items: center; border: 1px solid var(--rule); background: var(--paper); }
+.calc .field:focus-within { outline: 2px solid var(--teal-bright); }
+.calc input { flex: 1; min-width: 0; font: inherit; font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; padding: 0.55rem 0.7rem; border: 0; background: none; color: var(--ink); caret-color: var(--teal); outline: none; }
+.calc .field span { padding: 0 0.7rem; color: var(--ink-soft); font-weight: 700; }
+.calc-out { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.1rem; padding-top: 0.9rem; border-top: 2px solid var(--rule); }
+.calc-out b { display: block; font-stretch: 66%; font-weight: 800; font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.calc-out .dn b { color: var(--down); }
+.calc-out .up b { color: var(--teal); }
+.calc-out span { font-size: 0.88rem; color: var(--ink-soft); }
+.calc-msg { margin: 0.9rem 0 0; font-size: 0.95rem; color: var(--ink-soft); min-height: 1.5em; }
+.calc-msg.err { color: var(--down); }
+@media (max-width: 560px) { .calc-row, .calc-out { grid-template-columns: 1fr; } }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (min-width: 761px) { .more-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="mast">
+  <div class="wrap mast-row">
+    <a class="logo" href="/">Capital<span>Zero</span></a>
+    <nav aria-label="Secciones">
+      <ul>
+        <li><a href="/#blog">Blog</a></li>
+        <li><a href="/#como-funciona">Cómo funciona</a></li>
+        <li><a href="/#planes">Planes</a></li>
+        <li><a href="/quienes-somos/">Quiénes somos</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-sm" href="/#planes">Prueba 30 días gratis</a>
+  </div>
+</header>
+
+<main>
+  <header class="art-head" id="artHead">
+    <div class="wrap">
+      <h1>La peor caída</h1>
+      <p class="standfirst fade" style="--d: 450ms">La peor caída (en inglés, <i>drawdown</i>) es la cifra que mejor predice si vas a aguantar una inversión o a venderla en pánico. Una lección completa del curso Riesgo para principiantes, gratis y sin registro.</p>
+      <p class="byline num fade" style="--d: 600ms"><b>Lección gratis</b> · Riesgo para principiantes, lección 7 · 10 minutos · Nivel inicial</p>
+    </div>
+  </header>
+
+  <div class="wrap art-grid">
+    <aside class="toc fade" style="--d: 700ms" aria-labelledby="toc-title">
+      <h2 id="toc-title">En esta lección</h2>
+      <ol>
+<li><a href="#idea">La idea</a></li>
+<li><a href="#ejemplo">Un ejemplo con datos</a></li>
+<li><a href="#pregunta">Tu pregunta</a></li>
+<li><a href="#ejercicio">Tu ejercicio</a></li>
+      </ol>
+    </aside>
+    <article class="prose" id="prose">
+<div class="part" id="idea">
+            <h2>La idea</h2>
+            <p>Cuando comparas dos inversiones, la rentabilidad final solo cuenta la mitad de la historia. La otra mitad es cuánto tuviste que aguantar por el camino, y para eso existe una cifra: la peor caída.</p>
+            <p>La peor caída mide la mayor bajada desde un máximo hasta el mínimo que llega después, antes de recuperar ese máximo. Si tu cartera sube hasta 12.000&nbsp;€ y luego baja hasta 9.000&nbsp;€, su peor caída es del 25&nbsp;%, aunque al final del año acabe ganando dinero.</p>
+            <p>Importa por una razón muy humana: casi nadie abandona una inversión por lo que gana, sino por lo que ve caer. La peor caída es la cifra que mejor predice si vas a vender en pánico en el peor momento.</p>
+            <div class="box">
+              <p class="box-title">Las caídas pesan más que las subidas</p>
+              <p>Para recuperar una caída hace falta una subida mayor que la propia caída. Cuanto más profunda es, más se dispara la diferencia.</p>
+              <table class="recover">
+                <thead><tr><th scope="col">Si caes</th><th scope="col">Para volver al máximo necesitas subir</th></tr></thead>
+                <tbody>
+                  <tr><td class="dn">−10&nbsp;%</td><td class="up">+11,1&nbsp;%</td></tr>
+                  <tr><td class="dn">−25&nbsp;%</td><td class="up">+33,3&nbsp;%</td></tr>
+                  <tr><td class="dn">−50&nbsp;%</td><td class="up">+100&nbsp;%</td></tr>
+                  <tr><td class="dn">−80&nbsp;%</td><td class="up">+400&nbsp;%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="box box-ex">
+              <p class="box-title">El S&amp;P 500 también cae</p>
+              <p>El índice que usamos como vara de medir ha tenido caídas muy duras: cerca de un 57&nbsp;% entre octubre de 2007 y marzo de 2009, un 34&nbsp;% en apenas un mes en 2020 y alrededor de un 25&nbsp;% a lo largo de 2022. Quien vendió en esos mínimos convirtió una caída temporal en una pérdida real.</p>
+            </div>
+          </div>
+
+        <div class="part" id="ejemplo">
+            <h2>Un ejemplo con datos</h2>
+            <p>Lucía abre su cartera de práctica con 10.000&nbsp;€ virtuales. En marzo llega a 12.400&nbsp;€, en junio baja hasta 9.300&nbsp;€ y en diciembre termina en 11.000&nbsp;€. ¿Cuál fue su peor caída?</p>
+            <ol class="steps-calc">
+              <li><span><strong>Busca el máximo antes de la bajada:</strong> 12.400&nbsp;€ en marzo.</span></li>
+              <li><span><strong>Busca el mínimo posterior:</strong> 9.300&nbsp;€ en junio.</span></li>
+              <li><span><strong>Calcula la diferencia en porcentaje:</strong> (9.300 − 12.400) ÷ 12.400 = −25&nbsp;%.</span></li>
+            </ol>
+            <p>Lucía acaba el año ganando un 10&nbsp;%, pero por el camino vio desaparecer una cuarta parte de lo que llevaba. Si esa cartera hubiera sido de dinero real, ¿habría aguantado? Esa es la pregunta que esta cifra te obliga a hacerte antes de invertir, no después.</p>
+          </div>
+
+        <div class="part" id="pregunta">
+            <h2>Tu pregunta</h2>
+            <p>Comprueba si la idea ha quedado clara. No hay registro ni puntuación: solo tú y la respuesta.</p>
+            <form class="quiz" id="quiz" aria-labelledby="quiz-q">
+          <p class="quiz-q" id="quiz-q">Dos carteras terminan el año ganando un 8&nbsp;%. ¿Cuál elegirías si estás empezando?</p>
+          <figure class="quiz-chart">
+            <svg viewBox="0 0 540 210" role="img" aria-label="Las dos carteras empiezan en 100 y acaban en 108. La A baja como mucho un 6 %; la B sube hasta 112 y cae hasta 84 antes de recuperarse.">
+              <g class="qc-grid">
+                <line x1="30" x2="510" y1="97.1" y2="97.1"/>
+                <line x1="30" x2="510" y1="56" y2="56"/>
+              </g>
+              <text class="qc-ax" x="0" y="101">100</text>
+              <text class="qc-ax" x="0" y="60">108</text>
+              <path class="qc-b" pathLength="1" d="M30 97.1 L70 76.6 L110 56.0 L150 35.4 L190 76.6 L230 122.9 L270 179.4 L310 158.9 L350 133.1 L390 107.4 L430 86.9 L470 71.4 L510 56.0"/>
+              <path class="qc-a" pathLength="1" d="M30 97.1 L70 92.0 L110 81.7 L150 89.4 L190 102.3 L230 113.6 L270 107.4 L310 97.1 L350 86.9 L390 79.1 L430 71.4 L470 63.7 L510 56.0"/>
+              <g class="qc-dd">
+                <line class="qc-dd-a" x1="230" x2="230" y1="81.7" y2="113.6"/>
+                <line class="qc-dd-b" x1="270" x2="270" y1="35.4" y2="179.4"/>
+                <text class="qc-dd-ta" x="196" y="134">−6&nbsp;%</text>
+                <text class="qc-dd-tb" x="280" y="198">−25&nbsp;%</text>
+              </g>
+              <text class="qc-la" x="516" y="50">A</text>
+              <text class="qc-lb" x="516" y="72">B</text>
+            </svg>
+            <figcaption>Ejemplo didáctico con datos inventados.</figcaption>
+          </figure>
+          <fieldset>
+            <legend class="visually-hidden">Elige una respuesta</legend>
+            <label><input type="radio" name="q" value="a"><span><b>La A.</b> Sube más despacio, pero sin sustos.</span></label>
+            <label><input type="radio" name="q" value="b"><span><b>La B.</b> Llegó a ganar un 12&nbsp;%: tiene más potencial.</span></label>
+            <label><input type="radio" name="q" value="c"><span><b>Da igual.</b> Las dos acaban ganando lo mismo.</span></label>
+          </fieldset>
+          <div class="quiz-out" id="quizOut" aria-live="polite"></div>
+        </form>
+          </div>
+
+        <div class="part" id="ejercicio">
+            <h2>Tu ejercicio</h2>
+            <p>Piensa en una inversión que conozcas, o invéntate una, y apunta su valor más alto y el más bajo que tuvo después. La calculadora te dice su peor caída y cuánto tendría que subir para recuperarse.</p>
+            <form class="calc" id="calc" novalidate>
+              <div class="calc-row">
+                <label for="cMax">Valor máximo<span class="field"><input id="cMax" inputmode="decimal" value="12.400" autocomplete="off"><span>€</span></span></label>
+                <label for="cMin">Mínimo posterior<span class="field"><input id="cMin" inputmode="decimal" value="9.300" autocomplete="off"><span>€</span></span></label>
+              </div>
+              <div class="calc-out" aria-live="polite">
+                <p class="dn"><b id="cDd">−25,0&nbsp;%</b><span>Peor caída</span></p>
+                <p class="up"><b id="cUp">+33,3&nbsp;%</b><span>Subida necesaria para recuperarte</span></p>
+              </div>
+              <p class="calc-msg" id="cMsg"></p>
+            </form>
+            <p>En CapitalZero este ejercicio lo haces con tu propia cartera de práctica: el simulador calcula tu peor caída cada mes y la pone al lado de la del S&amp;P 500, para que sepas cuánto riesgo estás asumiendo de verdad.</p>
+          </div>
+      <section class="art-cta" aria-labelledby="cta-title">
+        <h2 id="cta-title">Así son todas las lecciones</h2>
+        <p>Diez minutos, una idea, una pregunta y un ejercicio en el simulador con dinero virtual. Empieza con la ruta de la primera semana y compara tu cartera con el S&amp;P 500. Los primeros 30 días son gratis.</p>
+        <a class="btn" href="/#planes">Empieza tus 30 días gratis
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </section>
+      <p class="disclaimer">Contenido educativo. No constituye asesoramiento en materia de inversión ni una recomendación de compra o venta de ningún instrumento financiero. Invertir conlleva riesgo de pérdida.</p>
+    </article>
+  </div>
+
+  <section class="more" aria-labelledby="more-title">
+    <div class="wrap">
+      <h2 id="more-title">Sigue aprendiendo en el blog</h2>
+      <div class="more-grid">
+<a class="more-item" href="/blog/balance/"><span class="more-meta"><b>Análisis</b> · 12 min</span><span class="more-title">Cómo analizar un balance empresarial</span></a>
+<a class="more-item" href="/blog/diversificacion/"><span class="more-meta"><b>Estrategia</b> · 14 min</span><span class="more-title">Diversificación: tu mejor aliada</span></a>
+<a class="more-item" href="/blog/buffett/"><span class="more-meta"><b>Grandes inversores</b> · 15 min</span><span class="more-title">Warren Buffett: lecciones de inversión</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo logo-sm" href="/">Capital<span>Zero</span></a>
+    <p><a href="/quienes-somos/">Quiénes somos</a> · <a href="/quienes-somos/#contacto">Contacto</a> · © 2026 CapitalZero Escuela de Inversión. Proyecto académico: esta web es una maqueta.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  if (document.documentElement.classList.contains("anim")) {
+    var h1 = document.querySelector(".art-head h1"), i = 0;
+    var words = h1.textContent.split(/(\s+)/);
+    h1.setAttribute("aria-label", h1.textContent);
+    h1.textContent = "";
+    words.forEach(function (part) {
+      if (!part) return;
+      if (/^\s+$/.test(part)) { h1.appendChild(document.createTextNode(part)); return; }
+      var w = document.createElement("span"); w.className = "w"; w.setAttribute("aria-hidden", "true");
+      var inner = document.createElement("span"); inner.textContent = part; inner.style.setProperty("--i", Math.min(i++, 12));
+      w.appendChild(inner); h1.appendChild(w);
+    });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { document.getElementById("artHead").classList.add("on"); document.querySelector(".art-grid").classList.add("on"); }); });
+  }
+
+  /* Pregunta */
+  var quiz = document.getElementById("quiz"), qOut = document.getElementById("quizOut");
+  var qMsg = {
+    a: ["Bien visto: la A.", "Las dos ganan un 8 %, pero la B llegó a caer un 25 % desde su máximo. Con esa caída, la mayoría de la gente que empieza vende en pánico y nunca ve la recuperación. La A te deja dormir y llegar al final."],
+    b: ["Es la respuesta más habitual, y la trampa de la lección.", "La B llegó a ganar un 12 %, sí, pero después cayó un 25 % desde ese máximo. Para quedarte con su 8 % tendrías que haber aguantado esa bajada sin vender, y casi nadie lo hace la primera vez."],
+    c: ["Casi: acaban igual, pero no son iguales.", "La rentabilidad final coincide, pero la B cayó un 25 % por el camino y la A solo un 6 %. Esa diferencia es la que decide si aguantas o vendes en el peor momento."]
+  };
+  quiz.addEventListener("change", function (ev) {
+    var v = ev.target.value;
+    quiz.classList.add("done");
+    quiz.querySelectorAll("label").forEach(function (l) {
+      var val = l.querySelector("input").value;
+      l.classList.toggle("right", val === "a");
+      l.classList.toggle("wrong", val === v && v !== "a");
+    });
+    qOut.innerHTML = "<strong></strong><p></p><p class=\"next\">Ahora pásalo a números en el ejercicio. <a href=\"#ejercicio\">Ir al ejercicio</a></p>";
+    qOut.querySelector("strong").textContent = qMsg[v][0];
+    qOut.querySelector("p").textContent = qMsg[v][1];
+  });
+  quiz.addEventListener("submit", function (ev) { ev.preventDefault(); });
+  if ("IntersectionObserver" in window && document.documentElement.classList.contains("anim")) {
+    var qo = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { quiz.classList.add("in"); qo.disconnect(); } }); }, { threshold: 0.3 });
+    qo.observe(quiz);
+  } else { quiz.classList.add("in"); }
+
+  /* Calculadora */
+  var cMax = document.getElementById("cMax"), cMin = document.getElementById("cMin");
+  var cDd = document.getElementById("cDd"), cUp = document.getElementById("cUp"), cMsg = document.getElementById("cMsg");
+  var fmt = function (x) { return x.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " %"; };
+  var num = function (s) { return parseFloat(String(s).replace(/\s|€/g, "").replace(/\./g, "").replace(",", ".")); };
+  function calc() {
+    var hi = num(cMax.value), lo = num(cMin.value);
+    cMsg.className = "calc-msg";
+    if (!(hi > 0) || !(lo >= 0)) { cMsg.textContent = "Escribe dos cantidades positivas, por ejemplo 12.400 y 9.300."; cMsg.className = "calc-msg err"; cDd.textContent = "—"; cUp.textContent = "—"; return; }
+    if (lo > hi) { cMsg.textContent = "El mínimo no puede ser mayor que el máximo: si sube, no hay caída. Revisa los valores."; cMsg.className = "calc-msg err"; cDd.textContent = "—"; cUp.textContent = "—"; return; }
+    var dd = (lo - hi) / hi * 100;
+    cDd.textContent = dd === 0 ? fmt(0) : "−" + fmt(Math.abs(dd));
+    cUp.textContent = lo === 0 ? "Sin recuperación posible" : "+" + fmt((hi / lo - 1) * 100);
+    var a = Math.abs(dd);
+    cMsg.textContent = a === 0 ? "Sin caída: el valor nunca bajó de su máximo." : a < 10 ? "Una caída suave. La mayoría de la gente la aguanta sin problemas." : a < 25 ? "Una caída seria. Aquí es donde mucha gente empieza a dudar." : a < 50 ? "Una caída dura, como la del S&P 500 en 2022 o en 2020. ¿Habrías aguantado sin vender?" : "Una caída extrema, del nivel de 2008. Recuperarla puede llevar años.";
+  }
+  cMax.addEventListener("input", calc); cMin.addEventListener("input", calc);
+  document.getElementById("calc").addEventListener("submit", function (ev) { ev.preventDefault(); });
+  calc();
+  var bar = document.getElementById("progress"), prose = document.getElementById("prose");
+  function upd() {
+    var r = prose.getBoundingClientRect(), h = r.height - window.innerHeight;
+    var p = h > 0 ? Math.min(1, Math.max(0, -r.top / h)) : 1;
+    bar.style.transform = "scaleX(" + p + ")";
+  }
+  window.addEventListener("scroll", upd, { passive: true }); window.addEventListener("resize", upd); upd();
+  var links = document.querySelectorAll(".toc a");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) links.forEach(function (a) {
+          var on = a.getAttribute("href") === "#" + e.target.id;
+          a.classList.toggle("on", on);
+          if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    document.querySelectorAll(".part[id]").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

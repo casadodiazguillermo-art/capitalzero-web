@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Escuela de inversión para aprender desde cero · CapitalZero</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f3e66'/%3E%3Cpath d='M29 17a15 15 0 1 0 0 30' fill='none' stroke='%23f4e3d1' stroke-width='7'/%3E%3Cpath d='M33 20.5h15L35 43.5h15' fill='none' stroke='%2317a2b8' stroke-width='7'/%3E%3C/svg%3E">
+<meta property="og:title" content="CapitalZero · Aprende a invertir antes de arriesgar tu primer euro">
+<meta property="og:description" content="Lecciones de 10 minutos, simulador con dinero virtual y el S&amp;P 500 como vara de medir. 30 días gratis.">
+<meta name="theme-color" content="#06182a">
+<meta name="description" content="Escuela de inversión para jóvenes: aprende a invertir desde cero con lecciones de 10 minutos y un simulador de bolsa con dinero virtual. 30 días gratis.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://capitalzero-web.netlify.app/">
+<link rel="canonical" href="/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "EducationalOrganization", "name": "CapitalZero Escuela de Inversión", "url": "https://capitalzero-web.netlify.app/", "description": "Escuela de inversión online para jóvenes: aprende a invertir desde cero con lecciones de 10 minutos, practica en un simulador de bolsa con dinero virtual y compárate con el S&P 500. 30 días gratis.", "areaServed": "ES", "address": {"@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES"}, "makesOffer": [{"@type": "Offer", "name": "Plan Starter", "price": "9", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Plan Pro", "price": "29", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Plan Elite", "price": "99", "priceCurrency": "EUR"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Esto es asesoramiento financiero?", "acceptedAnswer": {"@type": "Answer", "text": "No. CapitalZero es formación: te enseñamos a analizar empresas, medir el riesgo y construir una cartera con criterio propio. Nadie del equipo te dirá qué comprar o vender, tampoco en la tutoría Elite."}}, {"@type": "Question", "name": "¿Necesito tener dinero para empezar?", "acceptedAnswer": {"@type": "Answer", "text": "No. Practicas con dinero virtual: 50.000 € en Starter y hasta 500.000 € en Pro. La idea es que no arriesgues tu primer euro real hasta que sepas por qué lo haces."}}, {"@type": "Question", "name": "¿Puedo perder dinero con CapitalZero?", "acceptedAnswer": {"@type": "Answer", "text": "En el simulador, no: el dinero es virtual. Lo único que pagas es la suscripción. Si después decides invertir de verdad, lo harás en tu propio bróker y con tu propio criterio, y ahí sí existe riesgo de pérdida."}}, {"@type": "Question", "name": "¿Qué pasa cuando terminan los 30 días gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Te avisamos antes de que acabe la prueba. Si quieres seguir, empieza tu suscripción; si no, cancelas en un clic y no se te cobra nada."}}, {"@type": "Question", "name": "¿Prometéis batir al S&P 500?", "acceptedAnswer": {"@type": "Answer", "text": "No, y desconfía de quien lo prometa. Usamos el S&P 500 como vara de medir: te enseña si tus decisiones aportan algo frente a la opción más sencilla, que es comprar el índice."}}, {"@type": "Question", "name": "¿Quién da las mentorías y tutorías?", "acceptedAnswer": {"@type": "Answer", "text": "Analistas con experiencia en mercados. Cada mentor muestra su formación y trayectoria en su perfil, para que sepas con quién estás aprendiendo."}}, {"@type": "Question", "name": "¿Puedo cambiar de plan?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, cuando quieras. Si subes de plan, el cambio es inmediato; si bajas, se aplica en el siguiente periodo de facturación."}}]}</script>
+<script>(function(){var d=document,h=d.head;d.documentElement.lang="es";d.querySelectorAll('body title,body meta[name],body meta[property],body link[rel="canonical"],body link[rel="icon"],body script[type="application/ld+json"]').forEach(function(n){h.appendChild(n)})})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Concepto: una sola escena 3D fija detrás de la página. Mil puntos de luz forman el "Zero" y se recomponen en
+   cada sección (ruta, mercado, terreno, planes). El texto flota encima en paneles de vidrio. Look único, nocturno. */
+:root {
+  --night: #06182a;
+  --deep: #0c2338;
+  --glass: rgba(9, 30, 50, 0.58);
+  --glass-hi: rgba(18, 48, 74, 0.7);
+  --sand: #f4e3d1;
+  --sand-soft: #cdb9a4;
+  --mute: #8ea2b4;
+  --teal: #4cc7da;
+  --teal-deep: #17a2b8;
+  --gold: #e0b787;
+  --down: #f08a6c;
+  --line: rgba(244, 227, 209, 0.14);
+  --line-hi: rgba(244, 227, 209, 0.32);
+  --f-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "Archivo", system-ui, -apple-system, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --max: 1280px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; background: var(--night); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  font-family: var(--f-body); font-size: 17px; line-height: 1.55;
+  background: var(--night); color: var(--sand);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--night); }
+::selection { background: var(--gold); color: var(--night); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.num { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--f-mono); }
+.wrap {
+  max-width: var(--max); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 700px) { .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- ESCENA 3D ---------- */
+#stage { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+#stage canvas { display: block; width: 100%; height: 100%; }
+.vignette {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 70% 30%, transparent 0 40%, rgba(6, 24, 42, 0.75) 100%),
+    radial-gradient(60% 50% at 80% 20%, rgba(23, 162, 184, 0.10), transparent 70%),
+    radial-gradient(50% 40% at 10% 90%, rgba(224, 183, 135, 0.07), transparent 70%);
+}
+.no-webgl #stage { background: radial-gradient(40% 40% at 70% 40%, rgba(76, 199, 218, 0.25), transparent 70%); }
+.hud {
+  position: fixed; z-index: 5; left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  font: 500 0.72rem/1.3 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute);
+  display: flex; gap: 0.7rem; align-items: center; pointer-events: none;
+}
+.hud i { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 12px var(--teal); animation: pulse 2.4s ease-in-out infinite; }
+.hud b { color: var(--sand); font-weight: 500; }
+@keyframes pulse { 50% { opacity: 0.35; } }
+@media (max-width: 700px) { .hud { display: none; } }
+
+main, header, footer { position: relative; z-index: 2; }
+
+/* ---------- NAVEGACIÓN ---------- */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(6, 24, 42, 0.55); border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
+.logo { font-family: var(--f-display); font-stretch: 62%; font-weight: 800; font-size: 1.9rem; line-height: 1; letter-spacing: -0.01em; text-decoration: none; }
+.logo span { color: var(--teal); }
+.nav ul { display: flex; list-style: none; gap: 0.2rem; }
+.nav li a { display: block; padding: 0.5rem 0.8rem; text-decoration: none; font-size: 0.86rem; font-weight: 600; color: var(--sand-soft); border-radius: 99px; transition: color 0.2s, background 0.2s; }
+.nav li a:hover { color: var(--sand); background: rgba(244, 227, 209, 0.08); }
+.progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); transform-origin: 0 50%; transform: scaleX(0); }
+@media (max-width: 980px) { .nav ul { display: none; } }
+
+/* ---------- BOTONES ---------- */
+.btn {
+  --bx: 0px; --by: 0px;
+  position: relative; display: inline-flex; align-items: center; gap: 0.7em;
+  font: 700 1rem/1 var(--f-body); padding: 1.05em 1.6em; border-radius: 99px;
+  background: var(--sand); color: var(--night); border: 0; text-decoration: none; cursor: pointer;
+  transform: translate(var(--bx), var(--by));
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s, background 0.25s;
+  box-shadow: 0 0 0 0 rgba(76, 199, 218, 0);
+  white-space: nowrap;
+}
+.btn:hover { background: #fff; box-shadow: 0 10px 40px -8px rgba(76, 199, 218, 0.55); }
+.btn:active { transform: translate(var(--bx), var(--by)) scale(0.97); }
+.btn svg { width: 1.1em; height: 1.1em; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s var(--ease-out); }
+.btn:hover svg { transform: translateX(4px); }
+.btn-ghost { background: transparent; color: var(--sand); box-shadow: inset 0 0 0 1.5px var(--line-hi); }
+.btn-ghost:hover { background: rgba(244, 227, 209, 0.08); box-shadow: inset 0 0 0 1.5px var(--sand); }
+.btn-sm { font-size: 0.88rem; padding: 0.75em 1.15em; }
+
+/* ---------- TIPOGRAFÍA COMÚN ---------- */
+.eyebrow { font: 500 0.75rem/1.2 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 0.6rem; }
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+.h-xl { font-family: var(--f-display); font-stretch: 62%; font-weight: 800; line-height: 0.88; letter-spacing: -0.02em; text-wrap: balance; }
+.h-l { font-family: var(--f-display); font-stretch: 64%; font-weight: 800; font-size: clamp(2.8rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.015em; text-wrap: balance; }
+.lede { font-size: 1.15rem; color: var(--sand-soft); max-width: 52ch; }
+.sec { padding-block: clamp(90px, 14vw, 180px); }
+.sec-head { display: grid; gap: 1.1rem; margin-bottom: clamp(36px, 5vw, 64px); max-width: 820px; }
+.split { display: inline-block; }
+.split .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.08em 0.02em 0.12em; margin: -0.08em -0.02em -0.12em; perspective: 600px; }
+.split .w > span { display: inline-block; transform-origin: 50% 100%; }
+
+/* ---------- HERO ---------- */
+.hero { min-height: min(100svh, 980px); display: flex; align-items: center; padding-block: 60px 90px; }
+.hero .wrap { width: 100%; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2rem; align-items: center; }
+.hero h1 { font-size: clamp(3.4rem, 9.6vw, 8.6rem); margin: 1.4rem 0 1.6rem; }
+.hero h1 em { font-style: normal; color: var(--teal); }
+.hero h1 .zero { color: var(--gold); }
+.hero .lede strong { color: var(--sand); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; align-items: center; margin-top: 2rem; }
+.hero-fine { margin-top: 1rem; font-size: 0.85rem; color: var(--mute); max-width: 46ch; }
+.stats { display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 56px); margin-top: clamp(40px, 6vw, 72px); padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.stat b { display: block; font-family: var(--f-display); font-stretch: 66%; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; }
+.stat span { font: 500 0.74rem/1.3 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+.stat b span { font: inherit; letter-spacing: inherit; text-transform: none; color: inherit; }
+.scroll-cue { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); display: grid; justify-items: center; gap: 8px; font: 500 0.68rem var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.scroll-cue span { width: 1px; height: 46px; background: linear-gradient(var(--teal), transparent); transform-origin: top; animation: cue 2s var(--ease-out) infinite; }
+@keyframes cue { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero { min-height: auto; padding-block: 48px 100px; }
+}
+
+/* ---------- TICKER ---------- */
+.ticker { border-block: 1px solid var(--line); background: rgba(6, 24, 42, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); overflow: hidden; }
+.ticker-track { display: flex; width: max-content; animation: tick 50s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-track span { padding: 0.9rem 1.6rem; white-space: nowrap; font-size: 0.92rem; color: var(--sand-soft); border-right: 1px solid var(--line); }
+.ticker-track b { font: 500 0.74rem var(--f-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-right: 0.6rem; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* ---------- TARJETAS 3D ---------- */
+.tilt {
+  --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%;
+  position: relative; transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.6s var(--ease-out);
+}
+.tilt.hovering { transition: transform 0.12s linear; }
+.tilt::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx) var(--my), rgba(244, 227, 209, 0.13), transparent 45%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.tilt.hovering::after { opacity: 1; }
+.glass {
+  background: var(--glass); border: 1px solid var(--line); border-radius: 22px;
+  backdrop-filter: blur(16px) saturate(130%); -webkit-backdrop-filter: blur(16px) saturate(130%);
+}
+.lift { transform: translateZ(40px); }
+
+/* ---------- CÓMO FUNCIONA ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.step { padding: clamp(24px, 3vw, 36px); min-height: 380px; display: flex; flex-direction: column; }
+.step .n { font: 500 0.78rem var(--f-mono); color: var(--teal); letter-spacing: 0.1em; }
+.step h3 { font-family: var(--f-display); font-stretch: 64%; font-weight: 800; font-size: clamp(2.6rem, 4.4vw, 3.6rem); line-height: 0.95; margin: 1.2rem 0 1rem; }
+.step p { color: var(--sand-soft); }
+.step ul { list-style: none; margin-top: auto; padding-top: 1.4rem; display: grid; gap: 0.55rem; }
+.step li { font-size: 0.92rem; display: flex; gap: 0.6rem; padding-top: 0.55rem; border-top: 1px solid var(--line); }
+.step li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 0.55em; border-radius: 50%; background: var(--gold); }
+.step .icon { width: 64px; height: 64px; }
+.step .icon svg { width: 100%; height: 100%; overflow: visible; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr; } .step { min-height: 0; } }
+
+/* ---------- ITINERARIO (scroll horizontal) ---------- */
+.journey { position: relative; overflow: hidden; }
+.journey-head { padding-top: clamp(40px, 6vw, 80px); }
+.journey-track { display: flex; gap: clamp(16px, 2vw, 28px); padding-block: 40px clamp(60px, 8vw, 110px); width: max-content; }
+.jpanel { width: min(560px, 78vw); padding: clamp(26px, 3vw, 44px); display: flex; flex-direction: column; gap: 1rem; min-height: 420px; }
+.jpanel .when { font-family: var(--f-display); font-stretch: 62%; font-weight: 800; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.85; background: linear-gradient(180deg, var(--sand), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.jpanel:last-child .when { background: linear-gradient(180deg, var(--gold), #b98552); -webkit-background-clip: text; background-clip: text; }
+.jpanel p { font-size: 1.15rem; color: var(--sand-soft); max-width: 36ch; }
+.jbar { margin-top: auto; height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.jbar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); }
+.jlabel { font: 500 0.74rem var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+@media (max-width: 900px) {
+  .journey-track { flex-direction: column; width: auto; }
+  .jpanel { width: auto; min-height: 0; }
+}
+
+.try { margin-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.2rem 2rem; align-items: center; padding: clamp(24px, 3vw, 40px); }
+.try h3 { font-family: var(--f-display); font-stretch: 68%; font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1; }
+.try p { color: var(--sand-soft); margin-top: 0.5rem; max-width: 60ch; }
+@media (max-width: 760px) { .try { grid-template-columns: 1fr; } .try .btn { justify-self: start; } }
+
+/* ---------- SIMULADOR ---------- */
+.sim { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr); gap: 0; overflow: hidden; }
+.sim-side { padding: clamp(22px, 3vw, 36px); border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 1.2rem; }
+.sim-main { padding: clamp(22px, 3vw, 36px); min-width: 0; }
+.presets { display: grid; gap: 0.6rem; }
+.preset {
+  font: inherit; text-align: left; cursor: pointer; color: var(--sand);
+  background: rgba(244, 227, 209, 0.04); border: 1px solid var(--line); border-radius: 14px;
+  padding: 0.9rem 1rem; display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem; align-items: center;
+  transition: border-color 0.25s, background 0.25s, transform 0.35s var(--ease-out);
+}
+.preset:hover { border-color: var(--line-hi); transform: translateX(4px); }
+.preset b { font-family: var(--f-display); font-stretch: 72%; font-weight: 800; font-size: 1.4rem; line-height: 1; }
+.preset small { grid-column: 1 / -1; color: var(--mute); font-size: 0.84rem; }
+.preset .mix { font: 500 0.72rem var(--f-mono); color: var(--mute); }
+.preset[aria-pressed="true"] { border-color: var(--teal); background: rgba(76, 199, 218, 0.1); }
+.preset[aria-pressed="true"] .mix { color: var(--teal); }
+.sim-tag { font: 500 0.72rem var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.chart { width: 100%; height: auto; display: block; overflow: visible; }
+.chart .gl { stroke: var(--line); stroke-width: 1; }
+.chart .ax { fill: var(--mute); font: 500 11px var(--f-mono); }
+.chart .lp { fill: none; stroke: var(--teal); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; filter: drop-shadow(0 0 8px rgba(76, 199, 218, 0.6)); }
+.chart .li { fill: none; stroke: var(--sand); stroke-width: 1.6; stroke-dasharray: 5 5; opacity: 0.7; }
+.chart .ap { fill: url(#gArea); }
+.chart .dot { fill: var(--teal); }
+.legend { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--sand-soft); margin: 0.6rem 0 1.2rem; }
+.legend i { display: inline-block; width: 22px; vertical-align: middle; margin-right: 0.45rem; }
+.legend .k1 { border-top: 3px solid var(--teal); }
+.legend .k2 { border-top: 2px dashed var(--sand); }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 14px; overflow: hidden; }
+.metric { background: var(--deep); padding: 0.9rem 1rem; }
+.metric span { display: block; font: 500 0.68rem var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+.metric b { font-family: var(--f-display); font-stretch: 70%; font-weight: 800; font-size: 1.9rem; line-height: 1.1; }
+.up { color: var(--teal); } .down { color: var(--down); }
+.verdict { margin-top: 1.2rem; font-size: 1.02rem; color: var(--sand-soft); min-height: 3.2em; }
+.verdict strong { color: var(--sand); }
+.note { font-size: 0.8rem; color: var(--mute); margin-top: 0.8rem; }
+@media (max-width: 900px) {
+  .sim { grid-template-columns: 1fr; }
+  .sim-side { border-right: 0; border-bottom: 1px solid var(--line); }
+  .presets { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .preset { grid-template-columns: 1fr; }
+  .preset small, .preset .mix { display: none; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- POSTURA ---------- */
+.manifesto { font-family: var(--f-display); font-stretch: 64%; font-weight: 800; font-size: clamp(2.6rem, 6.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.01em; max-width: 18ch; }
+.manifesto .mw { display: inline-block; }
+.manifesto mark { background: none; color: var(--gold); }
+.manifesto-sub { margin-top: 1.6rem; max-width: 60ch; color: var(--sand-soft); font-size: 1.1rem; }
+.tenets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px); margin-top: clamp(48px, 7vw, 90px); }
+.tenet { padding: 1.5rem; }
+.tenet b { display: block; font-family: var(--f-display); font-stretch: 72%; font-weight: 800; font-size: 1.5rem; line-height: 1.05; color: var(--gold); margin-bottom: 0.7rem; }
+.tenet p { font-size: 0.95rem; color: var(--sand-soft); }
+@media (max-width: 980px) { .tenets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .tenets { grid-template-columns: 1fr; } }
+
+/* ---------- CLASIFICACIÓN ---------- */
+.board { overflow-x: auto; padding: 0.4rem clamp(12px, 2vw, 24px); perspective: 1200px; }
+.standings { width: 100%; border-collapse: collapse; min-width: 720px; }
+.standings th, .standings td { padding: 1rem 0.7rem; text-align: right; border-bottom: 1px solid var(--line); }
+.standings th:nth-child(-n+2), .standings td:nth-child(-n+2) { text-align: left; }
+.standings thead th { font: 500 0.7rem var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+.standings tbody tr { transform-origin: 50% 0; transition: background 0.25s; }
+.standings tbody tr:hover { background: rgba(244, 227, 209, 0.04); }
+.standings td:first-child { font-family: var(--f-display); font-stretch: 62%; font-weight: 800; font-size: 2rem; width: 3rem; color: var(--mute); }
+.standings tbody tr:first-child td:first-child { color: var(--gold); }
+.standings .who { font-weight: 700; }
+.standings .who small { display: block; font-weight: 400; color: var(--mute); font-size: 0.82rem; }
+.standings .score { font-family: var(--f-display); font-stretch: 70%; font-weight: 800; font-size: 1.5rem; }
+.risk { display: inline-block; width: 70px; height: 6px; border-radius: 6px; background: var(--line); vertical-align: middle; margin-left: 0.5rem; overflow: hidden; }
+.risk i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--down)); border-radius: 6px; }
+.board-note { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem 2rem; margin-top: 1.2rem; font-size: 0.88rem; color: var(--mute); }
+.board-note strong { color: var(--sand-soft); }
+
+/* ---------- DESAFÍOS (tarjetas que giran) ---------- */
+.flips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.flip { perspective: 1400px; height: 360px; }
+.flip-btn { all: unset; display: block; width: 100%; height: 100%; cursor: pointer; border-radius: 22px; }
+.flip-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+.flip-in { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.9s var(--ease-out); }
+.flip.on .flip-in { transform: rotateY(180deg); }
+@media (hover: hover) { .flip:hover .flip-in { transform: rotateY(180deg); } }
+.face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: 1.8rem; display: flex; flex-direction: column; border-radius: 22px; }
+.face.front { justify-content: space-between; overflow: hidden; }
+.face.front h3 { font-family: var(--f-display); font-stretch: 62%; font-weight: 800; font-size: clamp(3.4rem, 6vw, 5rem); line-height: 0.85; }
+.face.front .hint { font: 500 0.72rem var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); display: flex; align-items: center; gap: 0.5rem; }
+.face.front .orb { position: absolute; right: -50px; top: -50px; width: 200px; height: 200px; border-radius: 50%; filter: blur(30px); opacity: 0.55; }
+.face.back { transform: rotateY(180deg); background: linear-gradient(160deg, var(--glass-hi), rgba(9, 30, 50, 0.85)); gap: 1rem; }
+.face.back p { color: var(--sand-soft); }
+.face.back .meta { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 0.92rem; }
+.face.back .meta b { display: block; font: 500 0.7rem var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+@media (max-width: 900px) { .flips { grid-template-columns: 1fr; } .flip { height: 300px; } }
+
+/* ---------- PLANES ---------- */
+.billing { display: inline-flex; padding: 4px; border-radius: 99px; border: 1px solid var(--line-hi); margin-bottom: 2rem; position: relative; }
+.billing button { position: relative; z-index: 1; font: 700 0.92rem var(--f-body); padding: 0.65rem 1.2rem; border-radius: 99px; background: none; border: 0; color: var(--sand-soft); cursor: pointer; transition: color 0.3s; }
+.billing button[aria-pressed="true"] { color: var(--night); }
+.billing button span { font: 500 0.7rem var(--f-mono); color: var(--gold); margin-left: 0.4rem; }
+.billing button[aria-pressed="true"] span { color: #8a5a2a; }
+.billing .pill { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; border-radius: 99px; background: var(--sand); transition: transform 0.5s var(--ease-out), width 0.5s var(--ease-out); }
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); align-items: stretch; }
+.plan { padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; }
+.plan.featured { background: linear-gradient(170deg, rgba(76, 199, 218, 0.18), rgba(9, 30, 50, 0.7) 60%); border-color: rgba(76, 199, 218, 0.45); }
+.plan-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.plan h3 { font-family: var(--f-display); font-stretch: 64%; font-weight: 800; font-size: 2.6rem; line-height: 1; }
+.badge { font: 500 0.68rem var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; background: var(--teal); color: var(--night); padding: 0.35rem 0.6rem; border-radius: 99px; }
+.plan .for { color: var(--sand-soft); font-size: 0.95rem; margin: 0.6rem 0 1.4rem; min-height: 3em; }
+.price { font-family: var(--f-display); font-stretch: 66%; font-weight: 800; font-size: 4.4rem; line-height: 1; display: flex; align-items: baseline; gap: 0.3rem; }
+.price small { font-family: var(--f-body); font-stretch: 100%; font-size: 0.95rem; font-weight: 600; color: var(--mute); }
+.price-alt { font-size: 0.85rem; color: var(--mute); min-height: 1.4em; margin: 0.4rem 0 1.4rem; }
+.plan ul { list-style: none; display: grid; gap: 0.1rem; margin-bottom: 1.6rem; flex: 1; }
+.plan li { display: flex; gap: 0.7rem; padding: 0.55rem 0; border-top: 1px solid var(--line); font-size: 0.95rem; }
+.plan li svg { flex: none; width: 17px; height: 17px; margin-top: 0.2rem; stroke: var(--teal); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.plan .btn { justify-content: center; width: 100%; }
+.plan-legal { font-size: 0.8rem; color: var(--mute); margin-top: 0.9rem; }
+.plans-foot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 1.8rem; font-size: 0.92rem; color: var(--mute); }
+.plans-foot strong { display: block; color: var(--sand); }
+@media (max-width: 900px) { .plans, .plans-foot { grid-template-columns: 1fr; } }
+
+/* ---------- PERFILES ---------- */
+.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.person { padding: clamp(24px, 3vw, 34px); display: flex; flex-direction: column; gap: 1rem; }
+.avatar { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-display); font-stretch: 70%; font-weight: 800; font-size: 1.7rem; color: var(--night); }
+.person h3 { font-family: var(--f-display); font-stretch: 68%; font-weight: 800; font-size: 2rem; line-height: 1; }
+.person .age { font-size: 0.9rem; color: var(--mute); margin-top: 0.3rem; }
+.person blockquote { font-size: 1.08rem; line-height: 1.5; color: var(--sand-soft); flex: 1; }
+.person .tag { font: 500 0.74rem var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); }
+@media (max-width: 900px) { .people { grid-template-columns: 1fr; } }
+
+/* ---------- TRANSPARENCIA ---------- */
+.ledger { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 22px; overflow: hidden; }
+.ledger > div { background: rgba(9, 30, 50, 0.82); padding: clamp(22px, 2.6vw, 32px); }
+.ledger dt { font-family: var(--f-display); font-stretch: 70%; font-weight: 800; font-size: 1.5rem; line-height: 1.05; margin-bottom: 0.5rem; }
+.ledger dd { color: var(--sand-soft); font-size: 0.96rem; }
+.ledger a { color: var(--teal); }
+@media (max-width: 900px) { .ledger { grid-template-columns: 1fr; } }
+
+/* ---------- BLOG ---------- */
+.posts { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: clamp(14px, 2vw, 24px); }
+.post { display: flex; flex-direction: column; text-decoration: none; overflow: hidden; }
+.post .art { height: 180px; position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.post .art canvas, .post .art svg { width: 100%; height: 100%; display: block; }
+.post .body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.post .cat { font: 500 0.7rem var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.post h3 { font-family: var(--f-display); font-stretch: 68%; font-weight: 800; font-size: 1.9rem; line-height: 1; text-wrap: balance; }
+.post p { color: var(--sand-soft); font-size: 0.95rem; }
+.post .when { margin-top: auto; font-size: 0.82rem; color: var(--mute); }
+.post:hover h3 { color: var(--teal); }
+.post .art svg { transition: transform 0.8s var(--ease-out); }
+.post:hover .art svg { transform: scale(1.06); }
+@media (max-width: 980px) { .posts { grid-template-columns: 1fr; } }
+
+/* ---------- FAQ ---------- */
+.faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(24px, 4vw, 56px); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1.3rem 0; font-family: var(--f-display); font-stretch: 78%; font-weight: 800; font-size: 1.3rem; line-height: 1.15; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary i { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line-hi); position: relative; transition: transform 0.4s var(--ease-out), background 0.3s; }
+.faq summary i::before, .faq summary i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: var(--sand); transform: translate(-50%, -50%); }
+.faq summary i::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform 0.4s var(--ease-out); }
+.faq details[open] summary i { transform: rotate(180deg); background: var(--teal); border-color: var(--teal); }
+.faq details[open] summary i::after { transform: translate(-50%, -50%) rotate(0deg); }
+.faq summary:hover { color: var(--teal); }
+.faq details p { padding-bottom: 1.3rem; color: var(--sand-soft); max-width: 60ch; }
+.faq details[open] p { animation: faqIn 0.5s var(--ease-out); }
+@keyframes faqIn { from { opacity: 0; transform: translateY(-8px); } }
+@media (max-width: 900px) { .faq { grid-template-columns: 1fr; } }
+
+/* ---------- CIERRE ---------- */
+.close { padding-block: clamp(120px, 18vw, 240px); text-align: center; }
+.close h2 { font-size: clamp(3.2rem, 10vw, 9rem); max-width: 14ch; margin: 1.6rem auto 2.4rem; }
+.close h2 em { font-style: normal; color: var(--teal); }
+.close .row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.close .fine { margin-top: 1.4rem; font-size: 0.88rem; color: var(--mute); }
+.price-strip { display: inline-flex; gap: 0; margin-top: 3rem; border: 1px solid var(--line); border-radius: 99px; overflow: hidden; flex-wrap: wrap; justify-content: center; }
+.price-strip span { padding: 0.7rem 1.3rem; font-size: 0.92rem; color: var(--sand-soft); border-left: 1px solid var(--line); }
+.price-strip span:first-child { border-left: 0; }
+.price-strip b { color: var(--sand); }
+
+/* ---------- PIE ---------- */
+footer { border-top: 1px solid var(--line); background: rgba(6, 24, 42, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding-block: 56px calc(40px + env(safe-area-inset-bottom, 0px)); font-size: 0.92rem; }
+.foot-grid { display: grid; grid-template-columns: 1.5fr repeat(3, minmax(0, 1fr)); gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+.foot-grid .logo { font-size: 3rem; display: inline-block; margin-bottom: 0.6rem; }
+.foot-grid h3 { font: 500 0.72rem var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-bottom: 0.8rem; }
+.foot-grid ul { list-style: none; display: grid; gap: 0.4rem; }
+.foot-grid a { text-decoration: none; color: var(--sand-soft); }
+.foot-grid a:hover { color: var(--sand); }
+.foot-grid p { color: var(--mute); }
+.disclaimer { padding-top: 1.4rem; color: var(--mute); font-size: 0.82rem; max-width: 95ch; display: grid; gap: 0.5rem; }
+@media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-grid > :first-child { grid-column: 1 / -1; } }
+
+/* ---------- PRUEBA GRATUITA ---------- */
+.trial { margin-top: clamp(20px, 3vw, 32px); display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr); gap: 1.5rem clamp(24px, 4vw, 56px); padding: clamp(24px, 3vw, 40px); }
+.trial h3 { font-family: var(--f-display); font-stretch: 64%; font-weight: 800; font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 0.95; }
+.trial ol { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; position: relative; }
+.trial ol::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: linear-gradient(90deg, var(--teal), var(--gold)); opacity: 0.6; }
+.trial li { position: relative; padding-top: 1.6rem; }
+.trial li::before { content: ""; position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--night); border: 2px solid var(--teal); }
+.trial li:first-child::before { background: var(--teal); box-shadow: 0 0 14px var(--teal); }
+.trial b { display: block; font-weight: 800; margin-bottom: 0.2rem; }
+.trial span { display: block; color: var(--sand-soft); font-size: 0.92rem; }
+@media (max-width: 900px) {
+  .trial { grid-template-columns: 1fr; }
+  .trial ol { grid-template-columns: 1fr; padding-left: 1.6rem; }
+  .trial ol::before { left: 6px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: linear-gradient(var(--teal), var(--gold)); }
+  .trial li { padding-top: 0; }
+  .trial li::before { left: -1.6rem; top: 0.3rem; }
+}
+.lede a { color: var(--teal); }
+
+/* ---------- DOCUMENTOS LEGALES ---------- */
+.legal { margin: auto; width: min(760px, calc(100vw - 24px)); max-height: min(86vh, 900px); padding: 0; border: 1px solid var(--line-hi); border-radius: 22px; background: var(--deep); color: var(--sand); box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7); overflow: hidden; }
+.legal[open] { display: flex; flex-direction: column; animation: legalIn 0.6s var(--ease-out); }
+@keyframes legalIn { from { opacity: 0; transform: perspective(900px) translateY(30px) rotateX(12deg); } }
+.legal::backdrop { background: rgba(3, 12, 22, 0.65); backdrop-filter: blur(6px); }
+.legal-head { display: flex; align-items: center; padding: 1rem clamp(16px, 3vw, 32px); border-bottom: 1px solid var(--line); }
+.icon-btn { margin-left: auto; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-hi); background: transparent; color: var(--sand); cursor: pointer; display: grid; place-items: center; transition: background 0.2s, transform 0.4s var(--ease-out); }
+.icon-btn:hover { background: rgba(244, 227, 209, 0.1); transform: rotate(90deg); }
+.icon-btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.2; fill: none; stroke-linecap: round; }
+.legal-tabs { display: flex; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line); padding: 0 clamp(16px, 3vw, 32px); }
+.legal-tabs button { font: 500 0.74rem var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 0.9rem 0.8rem; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--mute); cursor: pointer; white-space: nowrap; }
+.legal-tabs button:first-child { padding-left: 0; }
+.legal-tabs button:hover { color: var(--sand); }
+.legal-tabs button[aria-current="true"] { color: var(--sand); border-bottom-color: var(--teal); }
+.legal-body { overflow-y: auto; padding: clamp(18px, 3vw, 32px); overscroll-behavior: contain; }
+.legal-body h2 { font-family: var(--f-display); font-stretch: 64%; font-weight: 800; font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 0.95; }
+.legal-date { font-size: 0.85rem; color: var(--mute); margin: 0.6rem 0 1.2rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--line); }
+.legal-body h3 { font-family: var(--f-display); font-stretch: 75%; font-weight: 800; font-size: 1.25rem; margin: 1.3rem 0 0.3rem; }
+.legal-body article p { max-width: 64ch; color: var(--sand-soft); }
+.contact { display: grid; gap: 0.9rem; max-width: 520px; }
+.contact label { display: grid; gap: 0.35rem; font-weight: 700; font-size: 0.92rem; }
+.contact input, .contact textarea { font: inherit; font-weight: 400; font-size: 1rem; padding: 0.75rem 0.9rem; border: 1px solid var(--line-hi); border-radius: 12px; background: rgba(244, 227, 209, 0.05); color: var(--sand); caret-color: var(--teal); }
+.contact input:focus, .contact textarea:focus { outline: 2px solid var(--teal); outline-offset: 0; }
+.contact [aria-invalid="true"] { border-color: var(--down); }
+.contact-err { color: var(--down); font-size: 0.9rem; min-height: 1.3em; }
+.contact .btn { justify-self: start; }
+body:has(.legal[open]) { overflow: hidden; }
+@media (max-width: 760px) { .legal { width: 100vw; max-width: 100vw; max-height: 92vh; margin: auto 0 0; border-radius: 22px 22px 0 0; } }
+
+/* ---------- ASISTENTE ---------- */
+.cz-chat-btn {
+  position: fixed; z-index: 70; right: max(20px, calc(env(safe-area-inset-right, 0px) + 12px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 0.6rem; font: 700 0.95rem var(--f-body);
+  padding: 0.85rem 1.2rem; border-radius: 99px; cursor: pointer; border: 0;
+  background: var(--teal); color: var(--night); box-shadow: 0 12px 40px -10px rgba(76, 199, 218, 0.7);
+  transition: transform 0.4s var(--ease-out), opacity 0.3s, box-shadow 0.3s;
+}
+.cz-chat-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 50px -10px rgba(76, 199, 218, 0.9); }
+.cz-chat-btn.pre { opacity: 0; pointer-events: none; transform: translateY(16px); }
+.cz-chat-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cz-chat {
+  position: fixed; z-index: 71; right: max(20px, calc(env(safe-area-inset-right, 0px) + 12px)); bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  width: 390px; height: 560px; max-height: calc(100vh - 120px); display: flex; flex-direction: column;
+  background: rgba(9, 30, 50, 0.92); color: var(--sand); border: 1px solid var(--line-hi); border-radius: 22px; overflow: hidden;
+  backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7);
+  transform-origin: 100% 100%; animation: chatIn 0.5s var(--ease-out);
+}
+@keyframes chatIn { from { opacity: 0; transform: perspective(900px) translateY(20px) scale(0.92) rotateX(10deg); } }
+.cz-head { display: flex; align-items: center; gap: 0.8rem; padding: 0.9rem 1rem; border-bottom: 1px solid var(--line); }
+.cz-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 12px var(--teal); flex: none; }
+.cz-title { font-family: var(--f-display); font-stretch: 70%; font-weight: 800; font-size: 1.4rem; line-height: 1; }
+.cz-status { font-size: 0.8rem; color: var(--mute); }
+.cz-msgs { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.cz-msg { max-width: 88%; font-size: 0.94rem; line-height: 1.5; padding: 0.7rem 0.9rem; border-radius: 16px; }
+.cz-msg p + p, .cz-msg p + ul, .cz-msg ul + p { margin-top: 0.4rem; }
+.cz-msg ul { padding-left: 1.1rem; }
+.cz-msg.bot { align-self: flex-start; background: rgba(244, 227, 209, 0.07); border-bottom-left-radius: 4px; }
+.cz-msg.user { align-self: flex-end; background: var(--sand); color: var(--night); border-bottom-right-radius: 4px; }
+.cz-msg.thinking { color: var(--mute); font-style: italic; }
+.cz-msg.note { align-self: center; font-size: 0.82rem; color: var(--down); background: none; padding: 0; }
+.cz-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.cz-chip { font: 600 0.85rem var(--f-body); padding: 0.45rem 0.8rem; border-radius: 99px; background: transparent; color: var(--sand); border: 1px solid var(--line-hi); cursor: pointer; text-align: left; }
+.cz-chip:hover { background: var(--teal); border-color: var(--teal); color: var(--night); }
+.cz-form { display: flex; gap: 0.5rem; padding: 0.7rem; border-top: 1px solid var(--line); }
+.cz-input { flex: 1; resize: none; font: inherit; font-size: 0.95rem; padding: 0.65rem 0.8rem; border: 1px solid var(--line-hi); border-radius: 14px; background: rgba(244, 227, 209, 0.05); color: var(--sand); }
+.cz-input::placeholder { color: var(--mute); }
+.cz-input:focus { outline: 2px solid var(--teal); outline-offset: 0; }
+.cz-send { width: 46px; border: 0; border-radius: 14px; background: var(--teal); color: var(--night); cursor: pointer; display: grid; place-items: center; }
+.cz-send svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.cz-send.stop svg { fill: currentColor; }
+.cz-foot { font-size: 0.76rem; color: var(--mute); padding: 0 0.9rem 0.8rem; }
+@media (max-width: 760px) {
+  .cz-chat { right: 0; left: 0; bottom: 0; width: auto; height: 82vh; max-height: none; border-radius: 22px 22px 0 0; }
+  .cz-chat-btn { padding: 0; width: 52px; height: 52px; justify-content: center; font-size: 0; gap: 0; right: max(14px, env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .cz-chat-btn svg { width: 24px; height: 24px; }
+}
+
+/* ---------- AVISO ---------- */
+.toast {
+  position: fixed; z-index: 80; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  transform: translate(-50%, 30px); opacity: 0; pointer-events: none;
+  background: var(--sand); color: var(--night); padding: 0.9rem 1.3rem; border-radius: 14px;
+  font-size: 0.95rem; font-weight: 600; max-width: min(92vw, 460px);
+  transition: opacity 0.3s, transform 0.5s var(--ease-out); box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; flex-wrap: wrap; width: auto; }
+  .scroll-cue span, .hud i { animation: none; }
+  .tilt, .flip-in { transition: none; }
+}
+</style>
+
+<div id="stage" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><i></i><span>Escena · <b id="hudName">El cero</b></span></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" id="top">Capital<span>Zero</span></a>
+    <ul>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#practica">Simulador</a></li>
+      <li><a href="#postura">Postura</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="/quienes-somos/">Quiénes somos</a></li>
+    </ul>
+    <a href="#planes" class="btn btn-sm magnetic">Prueba 30 días gratis</a>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" data-scene="torus" data-label="El cero" data-x="2.6" data-dim="1">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow hero-in">Escuela de inversión · Madrid</span>
+          <h1 class="h-xl split" data-split>Aprende a invertir antes de arriesgar tu <em>primer euro</em>.</h1>
+          <p class="lede hero-in">Practica con <strong>dinero virtual sobre empresas reales</strong>, junto a una comunidad con mentores. En 90 días construyes tu primera cartera, la comparas con el S&amp;P 500 y decides tú cuándo dar el paso.</p>
+          <div class="hero-cta hero-in">
+            <a href="#planes" class="btn magnetic">Empieza tus 30 días gratis
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#practica" class="btn btn-ghost">Probar el simulador</a>
+          </div>
+          <p class="hero-fine hero-in">Te avisamos antes del primer cobro y cancelas en un clic. No vendemos productos financieros.</p>
+          <div class="stats hero-in">
+            <div class="stat"><b class="num"><span data-count="10">10</span> min</b><span>por lección</span></div>
+            <div class="stat"><b class="num"><span data-count="50000" data-fmt="k">50.000</span> €</b><span>virtuales para practicar</span></div>
+            <div class="stat"><b class="num"><span data-count="90">90</span> días</b><span>hasta tu primera cartera</span></div>
+            <div class="stat"><b class="num"><span data-count="9">9</span> €</b><span>al mes, desde</span></div>
+          </div>
+        </div>
+        <div aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Desliza<span></span></div>
+  </section>
+
+  <div class="ticker" aria-label="Hoy en la escuela">
+    <div class="ticker-track">
+      <span><b>Hoy</b>Nueva lección: cómo leer un balance en 10 minutos</span>
+      <span><b>Desafío</b>Octubre va de dividendos: construye una cartera de rentas</span>
+      <span><b>Simulador</b>50.000 € virtuales para empezar en el plan Starter</span>
+      <span><b>Comunidad</b>Mentoría grupal mensual en el plan Pro</span>
+      <span><b>Recuerda</b>El S&amp;P 500 es tu vara de medir, no una promesa</span>
+      <span><b>Blog</b>Las lecciones de Warren Buffett, explicadas para empezar</span>
+      <span aria-hidden="true"><b>Hoy</b>Nueva lección: cómo leer un balance en 10 minutos</span>
+      <span aria-hidden="true"><b>Desafío</b>Octubre va de dividendos: construye una cartera de rentas</span>
+      <span aria-hidden="true"><b>Simulador</b>50.000 € virtuales para empezar en el plan Starter</span>
+      <span aria-hidden="true"><b>Comunidad</b>Mentoría grupal mensual en el plan Pro</span>
+      <span aria-hidden="true"><b>Recuerda</b>El S&amp;P 500 es tu vara de medir, no una promesa</span>
+      <span aria-hidden="true"><b>Blog</b>Las lecciones de Warren Buffett, explicadas para empezar</span>
+    </div>
+  </div>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="sec" id="como-funciona" data-scene="helix" data-label="Tu ruta" data-x="3.2" data-dim="0.55">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Cómo funciona</span>
+        <h2 class="h-l split" data-split>Tres hábitos, en este orden.</h2>
+        <p class="lede reveal">Cada módulo termina con un ejercicio en el simulador, así que nunca te quedas solo con la teoría.</p>
+      </div>
+      <div class="steps">
+        <article class="step glass tilt card-in">
+          <div class="lift">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M8 14h20a6 6 0 0 1 6 6v32a5 5 0 0 0-5-5H8zM56 14H38a6 6 0 0 0-4 2" fill="none" stroke="#4cc7da" stroke-width="2.5" stroke-linejoin="round"/><path d="M56 14v33H39a5 5 0 0 0-5 5" fill="none" stroke="#e0b787" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+            <p class="n">Hábito 1 de 3</p>
+            <h3>Aprende</h3>
+            <p>Cursos por niveles con una ruta guiada, desde qué es una acción hasta cómo valorar una empresa. Píldoras de 10 minutos y un glosario para cuando aparece la jerga.</p>
+          </div>
+          <ul>
+            <li>5 cursos introductorios en Starter, más de 50 en Pro</li>
+            <li>Casos reales de empresas cotizadas</li>
+          </ul>
+        </article>
+        <article class="step glass tilt card-in">
+          <div class="lift">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="8" y="34" width="10" height="20" rx="2" fill="none" stroke="#4cc7da" stroke-width="2.5"/><rect x="27" y="22" width="10" height="32" rx="2" fill="none" stroke="#4cc7da" stroke-width="2.5"/><rect x="46" y="10" width="10" height="44" rx="2" fill="none" stroke="#e0b787" stroke-width="2.5"/></svg></div>
+            <p class="n">Hábito 2 de 3</p>
+            <h3>Practica</h3>
+            <p>Un simulador de cartera con dinero virtual y empresas reales. Te equivocas aquí, donde equivocarse es gratis, y no con tus ahorros.</p>
+          </div>
+          <ul>
+            <li>50.000 € virtuales en Starter, hasta 500.000 € en Pro</li>
+            <li>Desafíos mensuales con la comunidad</li>
+          </ul>
+        </article>
+        <article class="step glass tilt card-in">
+          <div class="lift">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M6 48l14-14 10 8 16-20 12 8" fill="none" stroke="#4cc7da" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 44l52-16" fill="none" stroke="#e0b787" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+            <p class="n">Hábito 3 de 3</p>
+            <h3>Compárate</h3>
+            <p>Cada mes ves cómo va tu cartera frente al S&amp;P 500, con su riesgo al lado de su rentabilidad. Así sabes si lo estás haciendo bien sin que nadie te lo venda.</p>
+          </div>
+          <ul>
+            <li>Informe mensual frente al índice en Pro</li>
+            <li>Comunidad moderada y mentores con credenciales visibles</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARIO -->
+  <section class="journey" id="itinerario" data-scene="helix" data-label="Tu ruta · 90 días" data-x="0" data-dim="0.5">
+    <div class="wrap journey-head">
+      <span class="eyebrow">Tu itinerario de 90 días</span>
+    </div>
+    <div class="wrap">
+      <div class="journey-track" id="journeyTrack">
+        <article class="jpanel glass">
+          <span class="jlabel">Etapa 1 de 4</span>
+          <span class="when">Semana 1</span>
+          <p>Tareas de 10 minutos para entender cómo funciona la bolsa y abrir tu simulador.</p>
+          <div class="jbar"><i style="width:8%"></i></div>
+        </article>
+        <article class="jpanel glass">
+          <span class="jlabel">Etapa 2 de 4</span>
+          <span class="when">Mes 1</span>
+          <p>Lees balances, entiendes el riesgo y diversificas tu primera cartera virtual.</p>
+          <div class="jbar"><i style="width:33%"></i></div>
+        </article>
+        <article class="jpanel glass">
+          <span class="jlabel">Etapa 3 de 4</span>
+          <span class="when">Mes 2</span>
+          <p>Analizas empresas reales, participas en desafíos y comparas tus decisiones con la comunidad.</p>
+          <div class="jbar"><i style="width:66%"></i></div>
+        </article>
+        <article class="jpanel glass">
+          <span class="jlabel">Etapa 4 de 4</span>
+          <span class="when">Día 90</span>
+          <p>Defiendes tu cartera, la comparas con el S&amp;P 500 y decides si das el paso con dinero real.</p>
+          <div class="jbar"><i style="width:100%"></i></div>
+        </article>
+      </div>
+    </div>
+    <div class="wrap" style="padding-bottom: clamp(60px, 8vw, 110px)">
+      <div class="try glass reveal">
+        <div>
+          <h3>Haz una lección completa, gratis</h3>
+          <p>«La peor caída»: la cifra que decide si aguantas una inversión o vendes en pánico. Diez minutos, una pregunta y una calculadora para practicar. Sin registro.</p>
+        </div>
+        <a class="btn btn-ghost" href="/leccion/">Empezar la lección
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULADOR -->
+  <section class="sec" id="practica" data-scene="bars" data-label="Mercado de práctica" data-x="0" data-dim="0.4">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Simulador</span>
+        <h2 class="h-l split" data-split>Tu cartera de práctica.</h2>
+        <p class="lede reveal">Un simulador de bolsa con dinero virtual: elige un perfil y mira 24 meses de cartera frente al S&amp;P 500. Rentabilidad y riesgo, siempre juntos.</p>
+      </div>
+      <div class="sim glass card-in">
+        <div class="sim-side">
+          <span class="sim-tag">Datos simulados · 24 meses</span>
+          <div class="presets" role="group" aria-label="Carteras de ejemplo">
+            <button type="button" class="preset" data-preset="prudente" aria-pressed="false"><b>Prudente</b><span class="mix">30/70</span><small>30 % acciones, 70 % renta fija</small></button>
+            <button type="button" class="preset" data-preset="equilibrada" aria-pressed="true"><b>Equilibrada</b><span class="mix">60/40</span><small>60 % acciones, 40 % renta fija</small></button>
+            <button type="button" class="preset" data-preset="atrevida" aria-pressed="false"><b>Atrevida</b><span class="mix">95/5</span><small>95 % acciones, concentrada en tecnología</small></button>
+          </div>
+          <p class="note">Ejemplo educativo con datos simulados: no son rentabilidades reales, pasadas ni futuras, ni una recomendación de inversión.</p>
+        </div>
+        <div class="sim-main">
+          <svg class="chart" id="chart" viewBox="0 0 600 280" role="img" aria-labelledby="chartDesc">
+            <desc id="chartDesc">Evolución simulada de tu cartera frente al S&amp;P 500 durante 24 meses</desc>
+            <defs>
+              <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4cc7da" stop-opacity="0.32"/><stop offset="1" stop-color="#4cc7da" stop-opacity="0"/></linearGradient>
+            </defs>
+            <g id="chartGrid"></g>
+            <path class="ap" id="pArea"/>
+            <path class="li" id="pIdx"/>
+            <path class="lp" id="pPort"/>
+            <circle class="dot" id="pDot" r="5"/>
+          </svg>
+          <div class="legend"><span><i class="k1"></i>Tu cartera</span><span><i class="k2"></i>S&amp;P 500</span></div>
+          <div class="metrics num">
+            <div class="metric"><span>Rentabilidad</span><b id="mRet">0</b></div>
+            <div class="metric"><span>Volatilidad</span><b id="mVol">0</b></div>
+            <div class="metric"><span>Peor caída</span><b id="mDd" class="down">0</b></div>
+            <div class="metric"><span>Frente al S&amp;P 500</span><b id="mVs">0</b></div>
+          </div>
+          <p class="verdict" id="verdict" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTURA -->
+  <section class="sec" id="postura" data-scene="sphere" data-label="Nuestra postura" data-x="2.8" data-dim="0.6">
+    <div class="wrap">
+      <span class="eyebrow reveal">Nuestra postura</span>
+      <p class="manifesto" id="manifesto" style="margin-top:1.6rem">Aquí nadie te va a prometer que batirás al mercado. Te vamos a enseñar a <mark>medirte con él.</mark></p>
+      <p class="manifesto-sub reveal">La mayoría de gestores profesionales no bate a su índice de forma sostenida. Por eso usamos el S&amp;P 500 como vara de medir de lo que aprendes, no como promesa de rentabilidad.</p>
+      <div class="tenets">
+        <div class="tenet glass tilt card-in"><b>Rigor sin hype</b><p>Explicamos el riesgo con la misma claridad que la rentabilidad. Ninguna cifra aparece sin su riesgo al lado.</p></div>
+        <div class="tenet glass tilt card-in"><b>Independencia</b><p>No cobramos comisiones por productos financieros ni ingresos de brókers o emisores. Solo cobramos por enseñar.</p></div>
+        <div class="tenet glass tilt card-in"><b>Formación, no asesoramiento</b><p>Te enseñamos a analizar y a decidir con criterio propio. Nunca te diremos qué comprar o vender.</p></div>
+        <div class="tenet glass tilt card-in"><b>Largo plazo</b><p>Invertir es un proceso de años, no una apuesta. Premiamos la constancia, no el acierto de un mes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASIFICACIÓN -->
+  <section class="sec" id="clasificacion" data-scene="wave" data-label="Terreno de mercado" data-x="0" data-dim="0.45">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">La clasificación</span>
+        <h2 class="h-l split" data-split>Gana quien gestiona el riesgo.</h2>
+        <p class="lede reveal">Cada mes la comunidad se mide con el S&amp;P 500. Gana quien gestiona mejor el riesgo y mantiene la constancia, no quien más arriesga.</p>
+      </div>
+      <div class="board glass card-in">
+        <table class="standings num">
+          <caption class="sr">Clasificación de ejemplo con datos simulados</caption>
+          <thead><tr><th scope="col">Pos.</th><th scope="col">Alumno</th><th scope="col">Rentab. 12 m</th><th scope="col">Volatilidad</th><th scope="col">Peor caída</th><th scope="col">Vs S&amp;P 500</th><th scope="col">Puntos</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="who">Irene M.<small>Pro · 11 meses de constancia</small></td><td class="up">+9,8 %</td><td>9,1 %<span class="risk"><i style="width:38%"></i></span></td><td class="down">−6,2 %</td><td class="down">−0,7 pp</td><td class="score">912</td></tr>
+            <tr><td>2</td><td class="who">Hugo R.<small>Starter · 9 meses</small></td><td class="up">+8,4 %</td><td>7,6 %<span class="risk"><i style="width:32%"></i></span></td><td class="down">−4,9 %</td><td class="down">−2,1 pp</td><td class="score">874</td></tr>
+            <tr><td>3</td><td class="who">Nerea P.<small>Pro · 12 meses</small></td><td class="up">+12,9 %</td><td>15,3 %<span class="risk"><i style="width:64%"></i></span></td><td class="down">−13,8 %</td><td class="up">+2,4 pp</td><td class="score">851</td></tr>
+            <tr><td>4</td><td class="who">Álvaro T.<small>Elite · 7 meses</small></td><td class="up">+7,1 %</td><td>8,8 %<span class="risk"><i style="width:37%"></i></span></td><td class="down">−7,5 %</td><td class="down">−3,4 pp</td><td class="score">803</td></tr>
+            <tr><td>5</td><td class="who">Claudia S.<small>Starter · 5 meses</small></td><td class="up">+18,6 %</td><td>24,0 %<span class="risk"><i style="width:100%"></i></span></td><td class="down">−21,7 %</td><td class="up">+8,1 pp</td><td class="score">768</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="board-note">
+        <span>Fíjate en el 5.º puesto: la mayor rentabilidad, pero con una caída del 21,7 %. Aquí eso no basta para ganar.</span>
+        <span><strong>Ejemplo ilustrativo:</strong> nombres y datos simulados, carteras virtuales.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESAFÍOS -->
+  <section class="sec" id="desafios" data-scene="wave" data-label="Terreno de mercado" data-x="0" data-dim="0.45">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Desafíos de octubre</span>
+        <h2 class="h-l split" data-split>Un reto al mes. Premios por mérito.</h2>
+        <p class="lede reveal">Retos mensuales para practicar una estrategia con la comunidad, con bases publicadas. Gira cada tarjeta para ver el reto.</p>
+      </div>
+      <div class="flips">
+        <div class="flip card-in"><button type="button" class="flip-btn" aria-label="Desafío Tech: ver detalles"><div class="flip-in">
+          <div class="face front glass"><span class="orb" style="background:#4cc7da"></span><span class="hint">Desafío 01 · octubre</span><h3>Tech</h3><span class="hint">Girar ↻</span></div>
+          <div class="face back glass"><span class="hint mono" style="font-size:.72rem;letter-spacing:.1em;color:var(--teal);text-transform:uppercase">Tech</span><p>Construye una cartera de cinco empresas tecnológicas y compárala con el Nasdaq 100. Aprenderás qué hay detrás de las valoraciones más exigentes.</p><p class="meta"><b>Mide</b>tu resultado frente al Nasdaq 100</p></div>
+        </div></button></div>
+        <div class="flip card-in"><button type="button" class="flip-btn" aria-label="Desafío ESG: ver detalles"><div class="flip-in">
+          <div class="face front glass"><span class="orb" style="background:#6fcf97"></span><span class="hint">Desafío 02 · octubre</span><h3>ESG</h3><span class="hint">Girar ↻</span></div>
+          <div class="face back glass"><span class="hint mono" style="font-size:.72rem;letter-spacing:.1em;color:var(--teal);text-transform:uppercase">ESG</span><p>Una cartera sostenible que tenga sentido también como inversión. Analiza criterios ambientales, sociales y de gobierno con empresas reales.</p><p class="meta"><b>Mide</b>la coherencia de tu tesis</p></div>
+        </div></button></div>
+        <div class="flip card-in"><button type="button" class="flip-btn" aria-label="Desafío Dividendos: ver detalles"><div class="flip-in">
+          <div class="face front glass"><span class="orb" style="background:#e0b787"></span><span class="hint">Desafío 03 · octubre</span><h3>Divi&shy;dendos</h3><span class="hint">Girar ↻</span></div>
+          <div class="face back glass"><span class="hint mono" style="font-size:.72rem;letter-spacing:.1em;color:var(--teal);text-transform:uppercase">Dividendos</span><p>Diseña una cartera de rentas y entiende cuándo un dividendo es sostenible y cuándo es una trampa.</p><p class="meta"><b>Mide</b>la estabilidad de tus rentas</p></div>
+        </div></button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section class="sec" id="planes" data-scene="pillars" data-label="Tres planes" data-x="0" data-dim="0.5">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Planes</span>
+        <h2 class="h-l split" data-split>Empieza con 30 días gratis.</h2>
+        <p class="lede reveal">En cualquier plan. Precios con IVA incluido.</p>
+      </div>
+      <div class="billing" role="group" aria-label="Forma de pago" id="billing">
+        <span class="pill" aria-hidden="true"></span>
+        <button type="button" data-billing="mes" aria-pressed="true">Mensual</button>
+        <button type="button" data-billing="ano" aria-pressed="false">Anual<span>2 meses gratis</span></button>
+      </div>
+      <div class="plans">
+        <article class="plan glass tilt card-in">
+          <div class="plan-top"><h3>Starter</h3></div>
+          <p class="for">Para empezar de cero con un presupuesto ajustado.</p>
+          <p class="price num" data-m="9" data-y="90"><span class="p">9 €</span><small class="u">/mes</small></p>
+          <p class="price-alt num"></p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Ruta de la primera semana en tareas de 10 minutos</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>5 cursos introductorios</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Simulador con 50.000 € virtuales</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Comunidad general y soporte por email</li>
+          </ul>
+          <button type="button" class="btn btn-ghost js-signup" data-plan="Starter">Probar Starter gratis</button>
+        </article>
+        <article class="plan glass tilt featured card-in">
+          <div class="plan-top"><h3>Pro</h3><span class="badge">Recomendado</span></div>
+          <p class="for">Para quien ya invierte algo y quiere aprender a analizar empresas.</p>
+          <p class="price num" data-m="29" data-y="290"><span class="p">29 €</span><small class="u">/mes</small></p>
+          <p class="price-alt num"></p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Todos los cursos (más de 50)</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Simulador avanzado, hasta 500.000 € virtuales</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Mentoría grupal mensual</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Desafíos con premios por mérito</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Informe mensual de tu cartera frente al S&amp;P 500</li>
+          </ul>
+          <button type="button" class="btn js-signup magnetic" data-plan="Pro">Probar Pro gratis</button>
+        </article>
+        <article class="plan glass tilt card-in">
+          <div class="plan-top"><h3>Elite</h3></div>
+          <p class="for">Para profesionales con ahorro y poco tiempo que quieren acompañamiento.</p>
+          <p class="price num" data-m="99" data-y="990"><span class="p">99 €</span><small class="u">/mes</small></p>
+          <p class="price-alt num"></p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Todo lo de Pro</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Tutoría formativa individual con un analista</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Llamada mensual de estrategia para revisar lo aprendido</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Acceso anticipado a contenidos y comunidad VIP</li>
+          </ul>
+          <button type="button" class="btn btn-ghost js-signup" data-plan="Elite">Probar Elite gratis</button>
+          <p class="plan-legal">La tutoría es formación: te enseñamos a analizar tu cartera de práctica, no te recomendamos qué comprar o vender.</p>
+        </article>
+      </div>
+      <div class="plans-foot">
+        <p><strong>30 días gratis</strong>Te avisamos antes del primer cobro.</p>
+        <p><strong>Cancelas en un clic</strong>Sin permanencia ni letra pequeña.</p>
+        <p><strong>Sin vender productos</strong>Nuestros ingresos vienen solo de las suscripciones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUIÉN -->
+  <section class="sec" id="para-quien" data-scene="sphere" data-label="La comunidad" data-x="0" data-dim="0.35">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Para quién es</span>
+        <h2 class="h-l split" data-split>¿Te reconoces en alguno?</h2>
+        <p class="lede reveal">Tres perfiles tipo de las personas para las que hemos diseñado la escuela.</p>
+      </div>
+      <div class="people">
+        <article class="person glass tilt card-in">
+          <div class="avatar" style="background:#4cc7da">L</div>
+          <div><h3>Lucía, 20 años</h3><p class="age">Estudiante · unos 1.500 € ahorrados</p></div>
+          <blockquote>«Quiero aprender lo básico y montar mi primera cartera, pero no sé por dónde empezar y me da miedo perder lo que he ahorrado.»</blockquote>
+          <p class="tag">Su plan: Starter</p>
+        </article>
+        <article class="person glass tilt card-in">
+          <div class="avatar" style="background:#e0b787">D</div>
+          <div><h3>Daniel, 25 años</h3><p class="age">Ingeniero junior · aporta 200 € al mes a un indexado</p></div>
+          <blockquote>«Perdí un 30 % siguiendo a un influencer. Ahora quiero aprender a valorar empresas y saber si lo hago mejor o peor que el índice.»</blockquote>
+          <p class="tag">Su plan: Pro</p>
+        </article>
+        <article class="person glass tilt card-in">
+          <div class="avatar" style="background:#f4e3d1">M</div>
+          <div><h3>Marta, 27 años</h3><p class="age">Profesional · 40.000 € ahorrados, poco tiempo</p></div>
+          <blockquote>«Tengo ahorros parados y quiero una estrategia a largo plazo, pero necesito que alguien me enseñe a hacerlo con criterio propio.»</blockquote>
+          <p class="tag">Su plan: Elite</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENCIA -->
+  <section class="sec" id="transparencia" data-scene="sphere" data-label="Las cuentas claras" data-x="0" data-dim="0.3">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Transparencia</span>
+        <h2 class="h-l split" data-split>Las cuentas claras.</h2>
+        <p class="lede reveal">Lo que deberías poder saber de cualquier escuela de inversión antes de pagarle un euro.</p>
+      </div>
+      <dl class="ledger card-in">
+        <div><dt>Cómo ganamos dinero</dt><dd>Solo con las suscripciones de los alumnos. No cobramos comisiones de brókers, no publicitamos productos financieros y no hay cursos de pago escondidos.</dd></div>
+        <div><dt>Tu dinero</dt><dd>Nunca lo tocamos. El simulador funciona con dinero virtual y jamás te pediremos acceso a tu banco ni a tu cuenta de bróker.</dd></div>
+        <div><dt>Qué no hacemos</dt><dd>Decirte qué comprar o vender, prometer rentabilidades o gestionar carteras. Si alguien te ofrece invertir en nuestro nombre, es un fraude: avísanos.</dd></div>
+        <div><dt>Marco legal</dt><dd>Somos una escuela de formación, no una empresa de servicios de inversión. Puedes comprobar quién está autorizado a asesorar en el <a href="https://www.cnmv.es/portal/consultas/busqueda-entidades" target="_blank" rel="noopener">registro de la CNMV</a>.</dd></div>
+        <div><dt>Tus datos</dt><dd>Los usamos solo para darte el servicio. No los vendemos ni los cedemos a terceros, y puedes descargarlos o borrarlos desde tu cuenta.</dd></div>
+        <div><dt>Las cifras de esta web</dt><dd>Todas las carteras, clasificaciones y gráficos son ejemplos con datos simulados, y lo indicamos siempre al lado.</dd></div>
+      </dl>
+      <aside class="trial glass card-in" aria-labelledby="trial-title">
+        <h3 id="trial-title">Qué pasa cuando te apuntas</h3>
+        <ol>
+          <li><b>Hoy</b><span>Eliges plan y empiezas. Tienes 30 días para probarlo todo.</span></li>
+          <li><b>Antes del día 30</b><span>Te escribimos para recordarte que la prueba termina y cuánto se te cobrará.</span></li>
+          <li><b>Día 30</b><span>Solo se cobra si sigues con nosotros. Si cancelaste antes, no se cobra nada.</span></li>
+          <li><b>Cuando quieras</b><span>Cancelas en un clic desde tu cuenta. Sin llamadas, sin formularios y sin permanencia.</span></li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="sec" id="blog" data-scene="bars" data-label="Lo último del blog" data-x="0" data-dim="0.3">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Blog</span>
+        <h2 class="h-l split" data-split>Empieza a pensar como inversor.</h2>
+        <p class="lede reveal">Artículos gratuitos para aprender a invertir desde cero. Se abren en una pestaña nueva.</p>
+      </div>
+      <div class="posts">
+        <a class="post glass tilt card-in" href="/blog/balance/">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice"><rect width="400" height="180" fill="#0c2338"/><rect x="30" y="30" width="160" height="40" fill="#17a2b8"/><rect x="30" y="74" width="160" height="78" fill="#4cc7da" opacity=".35"/><rect x="210" y="30" width="160" height="30" fill="#f08a6c" opacity=".8"/><rect x="210" y="64" width="160" height="32" fill="#f08a6c" opacity=".35"/><rect x="210" y="100" width="160" height="52" fill="#e0b787"/><text x="40" y="55" fill="#06182a" font-family="IBM Plex Mono, monospace" font-size="12">ACTIVO</text><text x="220" y="130" fill="#06182a" font-family="IBM Plex Mono, monospace" font-size="12">PATRIMONIO</text></svg></div>
+          <div class="body"><span class="cat">Análisis</span><h3>Cómo analizar un balance empresarial</h3><p>Activo, pasivo y patrimonio neto con un ejemplo completo, los cuatro ratios que importan y una lista para revisar cualquier empresa.</p><span class="when">28 sep 2026 · 12 min</span></div>
+        </a>
+        <a class="post glass tilt card-in" href="/blog/diversificacion/">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice"><rect width="300" height="180" fill="#0c2338"/><circle cx="150" cy="90" r="60" fill="none" stroke="#4cc7da" stroke-width="22" stroke-dasharray="120 257"/><circle cx="150" cy="90" r="60" fill="none" stroke="#e0b787" stroke-width="22" stroke-dasharray="90 287" stroke-dashoffset="-124"/><circle cx="150" cy="90" r="60" fill="none" stroke="#f4e3d1" stroke-width="22" stroke-dasharray="70 307" stroke-dashoffset="-218"/><circle cx="150" cy="90" r="60" fill="none" stroke="#f08a6c" stroke-width="22" stroke-dasharray="80 297" stroke-dashoffset="-292"/></svg></div>
+          <div class="body"><span class="cat">Estrategia</span><h3>Diversificación: tu mejor aliada</h3><p>Riesgo sistemático y específico, los cinco tipos de diversificación y tres carteras de ejemplo.</p><span class="when">25 sep 2026 · 14 min</span></div>
+        </a>
+        <a class="post glass tilt card-in" href="/blog/buffett/">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice"><rect width="300" height="180" fill="#0c2338"/><path d="M0 150 C60 140 80 120 120 110 S190 70 230 50 S280 25 300 20" fill="none" stroke="#e0b787" stroke-width="3"/><path d="M0 150 C60 140 80 120 120 110 S190 70 230 50 S280 25 300 20 V180 H0Z" fill="#e0b787" opacity=".12"/><text x="20" y="40" fill="#f4e3d1" font-family="Archivo, sans-serif" font-weight="800" font-size="34" font-stretch="62%">1965 → hoy</text></svg></div>
+          <div class="body"><span class="cat">Grandes inversores</span><h3>Warren Buffett: lecciones de inversión</h3><p>El value investing en diez lecciones y lo que enseñan Coca-Cola, American Express y Apple.</p><span class="when">22 sep 2026 · 15 min</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="preguntas" data-scene="sphere" data-label="Preguntas" data-x="0" data-dim="0.3">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Preguntas frecuentes</span>
+        <h2 class="h-l split" data-split>Antes de empezar.</h2>
+        <p class="lede reveal">Las dudas que nos hacen antes de empezar. Si la tuya no está, <a href="#" class="js-chat-open">pregúntale al asistente</a>.</p>
+      </div>
+      <div class="faq">
+        <div>
+          <details><summary>¿Esto es asesoramiento financiero?<i></i></summary><p>No. CapitalZero es formación: te enseñamos a analizar empresas, medir el riesgo y construir una cartera con criterio propio. Nadie del equipo te dirá qué comprar o vender, tampoco en la tutoría Elite.</p></details>
+          <details><summary>¿Necesito tener dinero para empezar?<i></i></summary><p>No. Practicas con dinero virtual: 50.000 € en Starter y hasta 500.000 € en Pro. La idea es que no arriesgues tu primer euro real hasta que sepas por qué lo haces.</p></details>
+          <details><summary>¿Puedo perder dinero con CapitalZero?<i></i></summary><p>En el simulador, no: el dinero es virtual. Lo único que pagas es la suscripción. Si después decides invertir de verdad, lo harás en tu propio bróker y con tu propio criterio, y ahí sí existe riesgo de pérdida.</p></details>
+          <details><summary>¿Qué pasa cuando terminan los 30 días gratis?<i></i></summary><p>Te avisamos antes de que acabe la prueba. Si quieres seguir, empieza tu suscripción; si no, cancelas en un clic y no se te cobra nada.</p></details>
+        </div>
+        <div>
+          <details><summary>¿Prometéis batir al S&amp;P 500?<i></i></summary><p>No, y desconfía de quien lo prometa. Usamos el S&amp;P 500 como vara de medir: te enseña si tus decisiones aportan algo frente a la opción más sencilla, que es comprar el índice.</p></details>
+          <details><summary>¿Quién da las mentorías y tutorías?<i></i></summary><p>Analistas con experiencia en mercados. Cada mentor muestra su formación y trayectoria en su perfil, para que sepas con quién estás aprendiendo.</p></details>
+          <details><summary>¿Puedo cambiar de plan?<i></i></summary><p>Sí, cuando quieras. Si subes de plan, el cambio es inmediato; si bajas, se aplica en el siguiente periodo de facturación.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="close" data-scene="torus" data-label="De cero a tu primera cartera" data-x="0" data-dim="0.9">
+    <div class="wrap">
+      <span class="eyebrow reveal">Tu siguiente paso</span>
+      <h2 class="h-xl split" data-split>Tu primera cartera en 90 días, <em>sin arriesgar un euro</em>.</h2>
+      <div class="row reveal">
+        <a href="#planes" class="btn magnetic">Empieza tus 30 días gratis
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <p class="fine reveal">Aprende y practica primero. Decide después.</p>
+      <div class="price-strip num reveal"><span><b>Starter</b> 9 €/mes</span><span><b>Pro</b> 29 €/mes</span><span><b>Elite</b> 99 €/mes</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">Capital<span>Zero</span></a>
+        <p>Escuela de inversión para jóvenes que empiezan desde cero. Madrid.</p>
+      </div>
+      <div><h3>La escuela</h3><ul><li><a href="/quienes-somos/">Quiénes somos</a></li><li><a href="#postura">Misión y valores</a></li><li><a href="#como-funciona">Cómo funciona</a></li><li><a href="#planes">Planes</a></li><li><a href="#para-quien">Para quién es</a></li></ul></div>
+      <div><h3>Recursos</h3><ul><li><a href="#blog">Blog</a></li><li><a href="#desafios">Desafíos</a></li><li><a href="#clasificacion">Clasificación</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ul></div>
+      <div><h3>Legal</h3><ul><li><a href="#aviso" data-legal="aviso">Aviso legal</a></li><li><a href="#privacidad" data-legal="privacidad">Privacidad</a></li><li><a href="#condiciones" data-legal="condiciones">Condiciones</a></li><li><a href="#cookies" data-legal="cookies">Cookies</a></li><li><a href="/quienes-somos/#contacto">Contacto</a></li></ul></div>
+    </div>
+    <div class="disclaimer">
+      <p>CapitalZero es una escuela de formación. No presta servicios de asesoramiento en materia de inversión ni recomienda la compra o venta de instrumentos financieros concretos. El simulador usa dinero virtual; los resultados obtenidos en él no garantizan resultados con dinero real. Invertir conlleva riesgo de pérdida.</p>
+      <p>© 2026 CapitalZero Escuela de Inversión. Proyecto académico: esta web es una maqueta y un prototipo de diseño.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog class="legal" id="legal" aria-labelledby="legalTitle">
+  <div class="legal-head">
+    <span class="logo" aria-hidden="true">Capital<span>Zero</span></span>
+    <button type="button" class="icon-btn js-legal-close" aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav class="legal-tabs" aria-label="Documentos legales">
+    <button type="button" data-doc="aviso">Aviso legal</button>
+    <button type="button" data-doc="privacidad">Privacidad</button>
+    <button type="button" data-doc="condiciones">Condiciones</button>
+    <button type="button" data-doc="cookies">Cookies</button>
+    <button type="button" data-doc="contacto">Contacto</button>
+  </nav>
+  <div class="legal-body">
+    <h2 id="legalTitle"></h2>
+    <article data-doc="aviso" hidden>
+      <p class="legal-date">Última actualización: 25 de octubre de 2026</p>
+      <h3>Titular</h3>
+      <p>CapitalZero Escuela de Inversión, sociedad limitada en constitución con domicilio en Madrid. La denominación social, el NIF y los datos registrales se publicarán aquí en cuanto la sociedad quede inscrita.</p>
+      <h3>Objeto</h3>
+      <p>Esta web presenta una escuela de formación en inversión a largo plazo. Su contenido es educativo y general: no constituye asesoramiento en materia de inversión ni una recomendación personalizada de comprar, vender o mantener ningún instrumento financiero.</p>
+      <h3>Riesgo</h3>
+      <p>Invertir conlleva riesgo de pérdida, incluido el capital. Los resultados del simulador se obtienen con dinero virtual y no garantizan resultados con dinero real. Las cifras de ejemplo de esta web son simuladas.</p>
+      <h3>Propiedad intelectual</h3>
+      <p>Los textos, gráficos, cursos y marca CapitalZero son propiedad de la escuela. Puedes citarlos con enlace a la fuente; no puedes revenderlos.</p>
+    </article>
+    <article data-doc="privacidad" hidden>
+      <p class="legal-date">Última actualización: 25 de octubre de 2026</p>
+      <h3>Qué datos tratamos</h3>
+      <p>Los que nos das al registrarte (nombre, email y datos de pago, que gestiona la pasarela de pago sin que los almacenemos), tu progreso en los cursos y tu actividad en el simulador.</p>
+      <h3>Para qué</h3>
+      <p>Para darte el servicio, avisarte antes de cada cobro, preparar tu informe mensual y, si lo aceptas, enviarte novedades. Nada más.</p>
+      <h3>Con quién los compartimos</h3>
+      <p>Solo con los proveedores imprescindibles para prestar el servicio (alojamiento, pago y email), con contratos que les obligan a protegerlos. Nunca los vendemos ni los cedemos a brókers, bancos o anunciantes.</p>
+      <h3>Tus derechos</h3>
+      <p>Puedes acceder a tus datos, corregirlos, descargarlos o pedir que los borremos en cualquier momento, desde tu cuenta o escribiéndonos. También puedes reclamar ante la Agencia Española de Protección de Datos.</p>
+    </article>
+    <article data-doc="condiciones" hidden>
+      <p class="legal-date">Última actualización: 25 de octubre de 2026</p>
+      <h3>Planes y precios</h3>
+      <p>Starter 9&nbsp;€, Pro 29&nbsp;€ y Elite 99&nbsp;€ al mes, o 90&nbsp;€, 290&nbsp;€ y 990&nbsp;€ al año. Todos los precios incluyen IVA.</p>
+      <h3>Prueba gratuita</h3>
+      <p>Todos los planes empiezan con 30 días gratis. Te avisamos antes de que termine la prueba y solo se cobra si sigues.</p>
+      <h3>Cancelación</h3>
+      <p>Puedes cancelar en un clic desde tu cuenta, en cualquier momento y sin permanencia. Mantienes el acceso hasta el final del periodo ya pagado.</p>
+      <h3>Naturaleza del servicio</h3>
+      <p>CapitalZero ofrece formación. Las mentorías y la tutoría Elite enseñan a analizar y a decidir; no incluyen recomendaciones personalizadas de inversión ni gestión de carteras.</p>
+      <h3>Comunidad</h3>
+      <p>La comunidad está moderada. No se permite promocionar productos financieros, pedir dinero ni dar consejos de inversión a cambio de pago.</p>
+    </article>
+    <article data-doc="cookies" hidden>
+      <p class="legal-date">Última actualización: 25 de octubre de 2026</p>
+      <h3>Lo corto</h3>
+      <p>Esta web no usa cookies de publicidad ni de seguimiento entre sitios. Por eso no te mostramos un banner para aceptarlas.</p>
+      <h3>Lo que sí guardamos</h3>
+      <p>Las preferencias técnicas imprescindibles para que la página funcione. Si en el futuro añadimos medición de visitas, te pediremos permiso antes.</p>
+    </article>
+    <article data-doc="contacto" hidden>
+      <p class="legal-date">Escríbenos y te responderemos por email.</p>
+      <form class="contact" id="contactForm" novalidate>
+        <label for="cName">Nombre<input id="cName" name="n" autocomplete="name" required></label>
+        <label for="cEmail">Email<input id="cEmail" name="e" type="email" autocomplete="email" required></label>
+        <label for="cMsg">Mensaje<textarea id="cMsg" name="m" rows="4" required></textarea></label>
+        <p class="contact-err" id="contactErr" role="alert"></p>
+        <button type="submit" class="btn">Enviar mensaje</button>
+      </form>
+    </article>
+  </div>
+</dialog>
+
+<button class="cz-chat-btn pre" id="czBtn" aria-label="Abrir el asistente de CapitalZero" aria-expanded="false" aria-controls="czChat">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg>
+  ¿Dudas? Pregunta
+</button>
+<div class="cz-chat" id="czChat" hidden role="dialog" aria-label="Asistente de CapitalZero">
+  <div class="cz-head">
+    <span class="cz-dot" aria-hidden="true"></span>
+    <div>
+      <div class="cz-title">Asistente CapitalZero</div>
+      <div class="cz-status">Resuelve dudas sobre la escuela</div>
+    </div>
+    <button class="icon-btn" id="czClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="cz-msgs" id="czMsgs"></div>
+  <form class="cz-form" id="czForm">
+    <textarea class="cz-input" id="czInput" rows="1" placeholder="Escribe tu pregunta..." aria-label="Tu pregunta"></textarea>
+    <button class="cz-send" id="czSend" type="submit" aria-label="Enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </form>
+  <div class="cz-foot">Asistente con IA. Información educativa, no asesoramiento financiero.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var reduced = false;
+  try { reduced = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+  var isMobile = innerWidth < 900;
+  var hasGsap = typeof gsap !== "undefined";
+  if (hasGsap && typeof ScrollTrigger !== "undefined") gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- utilidades ---------- */
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function gauss(r) { var u = r() || 1e-9, v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function fmt(n, d) { return n.toLocaleString("es-ES", { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  var TAU = Math.PI * 2;
+
+  /* =========================================================
+     ESCENA 3D: una nube de partículas que cambia de forma
+     ========================================================= */
+  var scene3d = null;
+  (function initStage() {
+    if (typeof THREE === "undefined") { document.documentElement.classList.add("no-webgl"); return; }
+    var host = document.getElementById("stage");
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: "high-performance" }); }
+    catch (e) { document.documentElement.classList.add("no-webgl"); return; }
+    var pr = Math.min(window.devicePixelRatio || 1, 2);
+    renderer.setPixelRatio(pr);
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setClearColor(0x000000, 0);
+    host.appendChild(renderer.domElement);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 9);
+
+    var N = isMobile ? 5000 : 11000;
+    var D = Math.floor(N * 0.12);
+    var M = N - D;
+    var C = {
+      teal: [0.30, 0.78, 0.86], tealD: [0.07, 0.42, 0.52], gold: [0.88, 0.72, 0.53],
+      sand: [0.96, 0.89, 0.82], down: [0.94, 0.54, 0.42], green: [0.44, 0.81, 0.59]
+    };
+
+    // Polvo de fondo: idéntico en todas las escenas para dar profundidad
+    var r0 = rng(3), dustP = new Float32Array(D * 3), dustC = new Float32Array(D * 3);
+    for (var i = 0; i < D; i++) {
+      var th = r0() * TAU, ph = Math.acos(2 * r0() - 1), rad = 5 + r0() * 8;
+      dustP[i * 3] = rad * Math.sin(ph) * Math.cos(th);
+      dustP[i * 3 + 1] = rad * Math.sin(ph) * Math.sin(th) * 0.7;
+      dustP[i * 3 + 2] = rad * Math.cos(ph) - 3;
+      var c = r0() < 0.2 ? C.gold : C.sand, k = 0.35 + r0() * 0.3;
+      dustC[i * 3] = c[0] * k; dustC[i * 3 + 1] = c[1] * k; dustC[i * 3 + 2] = c[2] * k;
+    }
+
+    function build(fn, seed) {
+      var r = rng(seed), pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
+      pos.set(dustP); col.set(dustC);
+      for (var j = 0; j < M; j++) {
+        var o = fn(j, r), idx = (D + j) * 3;
+        pos[idx] = o[0]; pos[idx + 1] = o[1]; pos[idx + 2] = o[2];
+        col[idx] = o[3][0]; col[idx + 1] = o[3][1]; col[idx + 2] = o[3][2];
+      }
+      return { pos: pos, col: col };
+    }
+
+    // El cero: un toro alargado como la "0" del logotipo
+    var torus = build(function (j, r) {
+      var u = r() * TAU, v = r() * TAU, R = 2.35, rr = 0.42 + gauss(r) * 0.06;
+      var x = (R + rr * Math.cos(v)) * Math.cos(u) * 0.74;
+      var y = (R + rr * Math.cos(v)) * Math.sin(u) * 1.08;
+      var z = rr * Math.sin(v);
+      var c = r() < 0.1 ? C.gold : r() < 0.07 ? C.sand : mix(C.tealD, C.teal, (Math.sin(v) + 1) / 2);
+      if (r() < 0.04) { x *= 1.25 + r() * 0.3; y *= 1.2 + r() * 0.3; z += gauss(r) * 0.4; c = C.sand; }
+      return [x, y, z, c];
+    }, 11);
+
+    // La ruta: una doble hélice que sube, con peldaños
+    var helix = build(function (j, r) {
+      var rad = 1.55, h = 5.6;
+      if (r() < 0.72) {
+        var t = r(), s = j % 2, a = t * TAU * 3 + s * Math.PI;
+        return [Math.cos(a) * rad + gauss(r) * 0.05, -h / 2 + t * h + gauss(r) * 0.05, Math.sin(a) * rad + gauss(r) * 0.05, mix(C.teal, C.gold, t)];
+      }
+      var step = Math.floor(r() * 30) / 29, f = r(), b = step * TAU * 3;
+      return [Math.cos(b) * rad * (1 - 2 * f), -h / 2 + step * h, Math.sin(b) * rad * (1 - 2 * f), mix(C.tealD, C.sand, 0.4)];
+    }, 12);
+
+    // El mercado de práctica: una ciudad de barras que crece hacia el fondo
+    var G = 11, s = 0.46, hs = [], rh = rng(5), hmax = 0;
+    for (var q = 0; q < G * G; q++) {
+      var gx = q % G, gz = Math.floor(q / G);
+      var hh = 0.3 + ((gx + (G - 1 - gz)) / (2 * (G - 1))) * 2.8 + rh() * 0.7;
+      hs.push(hh); hmax = Math.max(hmax, hh);
+    }
+    var bars = build(function (j, r) {
+      var cI = j % (G * G), gx = cI % G, gz = Math.floor(cI / G), h = hs[cI], w = 0.15, base = -1.9;
+      var cx = (gx - (G - 1) / 2) * s, cz = (gz - (G - 1) / 2) * s, x, y, z, top = r() < 0.22;
+      if (top) { x = cx + (r() * 2 - 1) * w; y = base + h; z = cz + (r() * 2 - 1) * w; }
+      else {
+        y = base + r() * h; var side = Math.floor(r() * 4), e = (r() * 2 - 1) * w;
+        if (side === 0) { x = cx + w; z = cz + e; } else if (side === 1) { x = cx - w; z = cz + e; }
+        else if (side === 2) { x = cx + e; z = cz + w; } else { x = cx + e; z = cz - w; }
+      }
+      var c = top ? mix(C.gold, C.sand, 0.5) : mix(C.tealD, C.gold, Math.pow(h / hmax, 1.4) * ((y - base) / h * 0.6 + 0.4));
+      return [x, y, z, c];
+    }, 13);
+
+    // Terreno de mercado: superficie ondulada + tu cartera (oro) y el índice (arena)
+    function surf(x, z) { return 0.38 * Math.sin(x * 1.1 + z * 0.7) + 0.22 * Math.cos(z * 1.9 - x * 0.5) - 0.9; }
+    var wave = build(function (j, r) {
+      var x = (r() * 2 - 1) * 4.6, z, y, p = r();
+      if (p < 0.8) { z = (r() * 2 - 1) * 2.8; y = surf(x, z); return [x, y, z, mix(C.tealD, C.teal, (y + 1.6) / 1.4 * 0.8)]; }
+      if (p < 0.92) { z = 0; y = surf(x, 0) + 1.1 + 0.32 * Math.sin(x * 2.1) + x * 0.12; return [x, y + gauss(r) * 0.025, z + gauss(r) * 0.025, C.gold]; }
+      if ((x * 2.2 % 1 + 1) % 1 < 0.4) x += 0.2;
+      z = 0.5; y = surf(x, 0.5) + 0.85 + 0.14 * Math.sin(x * 1.3 + 1) + x * 0.08;
+      return [x, y + gauss(r) * 0.02, z, C.sand];
+    }, 14);
+
+    // Tres planes: tres columnas de altura creciente
+    var pillars = build(function (j, r) {
+      var p = j % 3, X = [-2.2, 0, 2.2][p], H = [1.6, 2.8, 4.0][p], base = -2.1, rad = 0.62, a = r() * TAU, x, y, z;
+      if (r() < 0.74) { y = base + r() * H; x = X + Math.cos(a) * rad; z = Math.sin(a) * rad; }
+      else { var rr = rad * Math.sqrt(r()); y = base + H; x = X + Math.cos(a) * rr; z = Math.sin(a) * rr; }
+      var c = [C.teal, C.gold, C.sand][p];
+      return [x, y, z, mix(c, C.tealD, r() * 0.35)];
+    }, 15);
+
+    // Una esfera con paralelos: la comunidad, el mundo
+    var sphere = build(function (j, r) {
+      var phi = Math.acos(1 - 2 * (j + 0.5) / M), th = Math.PI * (1 + Math.sqrt(5)) * j, rad = 2.35;
+      if (r() < 0.38) phi = Math.round(phi / (Math.PI / 14)) * (Math.PI / 14);
+      var c = Math.abs(Math.cos(phi)) < 0.06 ? C.gold : mix(C.tealD, C.teal, r());
+      return [rad * Math.sin(phi) * Math.cos(th), rad * Math.cos(phi), rad * Math.sin(phi) * Math.sin(th), c];
+    }, 16);
+
+    var shapes = { torus: torus, helix: helix, bars: bars, wave: wave, pillars: pillars, sphere: sphere };
+    var tilts = { torus: 0, helix: 0.15, bars: 0.42, wave: 0.38, pillars: 0.12, sphere: 0.2 };
+
+    var geo = new THREE.BufferGeometry();
+    var pos = new Float32Array(torus.pos), col = new Float32Array(torus.col);
+    // Arranque: las partículas salen de un punto (el cero) y se despliegan
+    if (!reduced) for (var a0 = D * 3; a0 < N * 3; a0++) pos[a0] *= 0.02;
+    var sizes = new Float32Array(N), rands = new Float32Array(N), speeds = new Float32Array(N);
+    var rr2 = rng(9);
+    for (var b0 = 0; b0 < N; b0++) {
+      sizes[b0] = b0 < D ? 0.6 + rr2() * 1.4 : 0.55 + rr2() * 1.1;
+      rands[b0] = rr2();
+      speeds[b0] = 0.018 + rr2() * 0.05;
+    }
+    geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+    geo.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
+    geo.setAttribute("aRand", new THREE.BufferAttribute(rands, 1));
+
+    var mat = new THREE.ShaderMaterial({
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, vertexColors: true,
+      uniforms: { uTime: { value: 0 }, uPr: { value: pr }, uSize: { value: isMobile ? 34 : 30 }, uOpacity: { value: 1 } },
+      vertexShader: [
+        "uniform float uTime; uniform float uPr; uniform float uSize;",
+        "attribute float aSize; attribute float aRand;",
+        "varying vec3 vColor; varying float vFade;",
+        "void main(){",
+        "  vec3 p = position;",
+        "  p += 0.035 * vec3(sin(uTime*0.9 + aRand*40.0), cos(uTime*0.7 + aRand*25.0), sin(uTime*0.6 + aRand*13.0));",
+        "  vec4 mv = modelViewMatrix * vec4(p, 1.0);",
+        "  gl_Position = projectionMatrix * mv;",
+        "  float tw = 0.75 + 0.25 * sin(uTime*2.0 + aRand*60.0);",
+        "  gl_PointSize = uSize * aSize * tw * uPr / -mv.z;",
+        "  vColor = color; vFade = smoothstep(22.0, 4.0, -mv.z);",
+        "}"
+      ].join("\n"),
+      fragmentShader: [
+        "uniform float uOpacity; varying vec3 vColor; varying float vFade;",
+        "void main(){",
+        "  float d = length(gl_PointCoord - 0.5);",
+        "  float a = smoothstep(0.5, 0.0, d); a = a*a;",
+        "  gl_FragColor = vec4(vColor * (1.0 + a*0.6), a * vFade * uOpacity);",
+        "}"
+      ].join("\n")
+    });
+    var points = new THREE.Points(geo, mat);
+    var group = new THREE.Group();
+    group.add(points);
+    scene.add(group);
+
+    var target = torus;
+    var state = { x: isMobile ? 0 : 2.6, y: isMobile ? 1.2 : 0, dim: isMobile ? 0.6 : 1, tilt: 0, scale: isMobile ? 0.82 : 1 };
+    var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    var spin = 0, scrollVel = 0, lastScroll = scrollY;
+
+    addEventListener("pointermove", function (e) {
+      pointer.tx = (e.clientX / innerWidth) * 2 - 1;
+      pointer.ty = (e.clientY / innerHeight) * 2 - 1;
+    }, { passive: true });
+    addEventListener("resize", function () {
+      camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+
+    var clock = new THREE.Clock(), running = true;
+    document.addEventListener("visibilitychange", function () { running = !document.hidden; if (running) { clock.getDelta(); loop(); } });
+
+    function loop() {
+      if (!running) return;
+      var dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+      var P = geo.attributes.position.array, Cc = geo.attributes.color.array, tp = target.pos, tc = target.col;
+      var f = reduced ? 1 : dt * 60;
+      for (var i = D; i < N; i++) {
+        var k = reduced ? 1 : Math.min(1, speeds[i] * f), i3 = i * 3;
+        P[i3] += (tp[i3] - P[i3]) * k; P[i3 + 1] += (tp[i3 + 1] - P[i3 + 1]) * k; P[i3 + 2] += (tp[i3 + 2] - P[i3 + 2]) * k;
+        Cc[i3] += (tc[i3] - Cc[i3]) * k; Cc[i3 + 1] += (tc[i3 + 1] - Cc[i3 + 1]) * k; Cc[i3 + 2] += (tc[i3 + 2] - Cc[i3 + 2]) * k;
+      }
+      geo.attributes.position.needsUpdate = true;
+      geo.attributes.color.needsUpdate = true;
+
+      var sc = scrollY; scrollVel += ((sc - lastScroll) - scrollVel) * 0.1; lastScroll = sc;
+      if (!reduced) spin += dt * 0.12 + scrollVel * 0.0009;
+      pointer.x += (pointer.tx - pointer.x) * 0.05; pointer.y += (pointer.ty - pointer.y) * 0.05;
+
+      group.position.x = state.x; group.position.y = state.y;
+      group.scale.setScalar(state.scale);
+      group.rotation.y = spin + pointer.x * 0.45;
+      group.rotation.x = state.tilt + pointer.y * 0.25;
+      camera.position.x = pointer.x * 0.4; camera.position.y = -pointer.y * 0.3;
+      camera.lookAt(state.x * 0.25, 0, 0);
+      mat.uniforms.uTime.value = reduced ? 0 : t;
+      mat.uniforms.uOpacity.value = state.dim;
+      renderer.render(scene, camera);
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    scene3d = {
+      set: function (name, x, dim) {
+        if (!shapes[name]) return;
+        target = shapes[name];
+        var to = { x: isMobile ? 0 : x, dim: isMobile ? Math.min(dim, 0.55) : dim, tilt: tilts[name], y: isMobile && name === "torus" ? 1.2 : 0, scale: isMobile ? 0.82 : 1 };
+        if (hasGsap && !reduced) gsap.to(state, Object.assign({ duration: 1.8, ease: "power3.inOut", overwrite: true }, to));
+        else Object.assign(state, to);
+      }
+    };
+  })();
+
+  /* ---------- cambio de escena por sección ---------- */
+  var hudName = document.getElementById("hudName");
+  var currentScene = null;
+  function enter(sec) {
+    var key = sec.dataset.scene + "|" + sec.dataset.x + "|" + sec.dataset.dim;
+    if (key === currentScene) return;
+    currentScene = key;
+    if (scene3d) scene3d.set(sec.dataset.scene, parseFloat(sec.dataset.x), parseFloat(sec.dataset.dim));
+    if (hudName && sec.dataset.label) {
+      if (hasGsap && !reduced) gsap.fromTo(hudName, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.5 });
+      hudName.textContent = sec.dataset.label;
+    }
+  }
+  var scenes = [].slice.call(document.querySelectorAll("[data-scene]"));
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) enter(e.target); });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    scenes.forEach(function (s) { io.observe(s); });
+  }
+
+  /* ---------- texto partido en palabras ---------- */
+  function splitWords(el) {
+    var out = [];
+    (function walk(node, parent) {
+      [].slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var parts = n.textContent.split(/(\s+)/), frag = document.createDocumentFragment();
+          parts.forEach(function (p) {
+            if (!p) return;
+            if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(" ")); return; }
+            var w = document.createElement("span"); w.className = "w";
+            var inner = document.createElement("span"); inner.textContent = p;
+            w.appendChild(inner); frag.appendChild(w); out.push(inner);
+          });
+          n.parentNode.replaceChild(frag, n);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    })(el);
+    return out;
+  }
+
+  /* ---------- animaciones de entrada ---------- */
+  if (hasGsap && !reduced && typeof ScrollTrigger !== "undefined") {
+    var heroH1 = document.querySelector(".hero h1");
+    var heroWords = splitWords(heroH1);
+    var tl = gsap.timeline({ delay: 0.15 });
+    tl.from(heroWords, { yPercent: 115, rotateX: -85, opacity: 0, duration: 1.2, ease: "expo.out", stagger: 0.055 })
+      .from(".hero-in", { y: 26, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.09 }, 0.35);
+
+    // contadores del hero
+    document.querySelectorAll("[data-count]").forEach(function (el) {
+      var end = +el.dataset.count, o = { v: 0 };
+      tl.to(o, { v: end, duration: 1.8, ease: "power3.out", onUpdate: function () { el.textContent = Math.round(o.v).toLocaleString("es-ES"); } }, 0.6);
+    });
+
+    document.querySelectorAll("[data-split]").forEach(function (el) {
+      if (el === heroH1) return;
+      var ws = splitWords(el);
+      gsap.from(ws, { yPercent: 115, rotateX: -80, opacity: 0, duration: 1.1, ease: "expo.out", stagger: 0.05,
+        scrollTrigger: { trigger: el, start: "top 85%" } });
+    });
+    gsap.utils.toArray(".reveal").forEach(function (el) {
+      gsap.from(el, { y: 30, opacity: 0, duration: 1, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 88%" } });
+    });
+    // Tarjetas que llegan girando en 3D
+    var groups = {};
+    gsap.utils.toArray(".card-in").forEach(function (el) {
+      var p = el.parentNode; var id = p.__gid || (p.__gid = Math.random().toString(36).slice(2));
+      (groups[id] = groups[id] || { parent: p, els: [] }).els.push(el);
+    });
+    Object.keys(groups).forEach(function (id) {
+      var g = groups[id];
+      gsap.from(g.els, { y: 90, rotateX: 28, rotateY: -8, opacity: 0, transformPerspective: 1100, transformOrigin: "50% 100%",
+        duration: 1.3, ease: "expo.out", stagger: 0.12, clearProps: "transform,opacity",
+        scrollTrigger: { trigger: g.parent, start: "top 82%" } });
+    });
+    // Filas de la clasificación que caen como fichas
+    gsap.from(".standings tbody tr", { rotateX: -90, opacity: 0, transformPerspective: 900, duration: 0.9, ease: "back.out(1.4)", stagger: 0.1,
+      scrollTrigger: { trigger: ".standings", start: "top 80%" } });
+    gsap.from(".risk i", { scaleX: 0, transformOrigin: "0 50%", duration: 1.2, ease: "expo.out", stagger: 0.1,
+      scrollTrigger: { trigger: ".standings", start: "top 75%" } });
+
+    // Manifiesto: las palabras se encienden con el scroll
+    var man = document.getElementById("manifesto");
+    var mw = splitWords(man);
+    gsap.set(mw, { opacity: 0.14 });
+    gsap.to(mw, { opacity: 1, stagger: 0.08, ease: "none",
+      scrollTrigger: { trigger: man, start: "top 78%", end: "bottom 45%", scrub: 0.6 } });
+
+    // Itinerario: scroll horizontal fijado (solo escritorio)
+    var mm = gsap.matchMedia();
+    mm.add("(min-width: 901px)", function () {
+      var track = document.getElementById("journeyTrack");
+      var dist = function () { return Math.max(0, track.scrollWidth - track.parentNode.clientWidth); };
+      var tw = gsap.to(track, { x: function () { return -dist(); }, ease: "none",
+        scrollTrigger: { trigger: "#itinerario", start: "top top", end: function () { return "+=" + (dist() + innerHeight * 0.3); }, pin: true, scrub: 0.8, invalidateOnRefresh: true } });
+      gsap.utils.toArray(".jpanel").forEach(function (p) {
+        gsap.from(p.querySelector(".when"), { yPercent: 40, opacity: 0.2, ease: "none",
+          scrollTrigger: { trigger: p, containerAnimation: tw, start: "left 90%", end: "left 40%", scrub: true } });
+        gsap.from(p.querySelector(".jbar i"), { scaleX: 0, transformOrigin: "0 50%", ease: "none",
+          scrollTrigger: { trigger: p, containerAnimation: tw, start: "left 80%", end: "left 30%", scrub: true } });
+      });
+    });
+
+    // Barra de progreso de lectura
+    gsap.to("#progress", { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: 0.3 } });
+
+    // Paralaje suave en los títulos de sección
+    gsap.utils.toArray(".h-l").forEach(function (h) {
+      gsap.to(h, { yPercent: -18, ease: "none", scrollTrigger: { trigger: h, start: "top bottom", end: "bottom top", scrub: true } });
+    });
+    addEventListener("load", function () { ScrollTrigger.refresh(); });
+  } else {
+    document.getElementById("progress").style.transform = "scaleX(0)";
+  }
+
+  /* ---------- tarjetas con inclinación 3D y brillo ---------- */
+  if (!reduced && matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".tilt").forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        el.classList.add("hovering");
+        el.style.setProperty("--ry", ((px - 0.5) * 12).toFixed(2) + "deg");
+        el.style.setProperty("--rx", ((0.5 - py) * 10).toFixed(2) + "deg");
+        el.style.setProperty("--mx", (px * 100).toFixed(1) + "%");
+        el.style.setProperty("--my", (py * 100).toFixed(1) + "%");
+      });
+      el.addEventListener("pointerleave", function () {
+        el.classList.remove("hovering");
+        el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg");
+      });
+    });
+    // Botones magnéticos
+    document.querySelectorAll(".magnetic").forEach(function (b) {
+      b.addEventListener("pointermove", function (e) {
+        var r = b.getBoundingClientRect();
+        b.style.setProperty("--bx", ((e.clientX - r.left - r.width / 2) * 0.25).toFixed(1) + "px");
+        b.style.setProperty("--by", ((e.clientY - r.top - r.height / 2) * 0.35).toFixed(1) + "px");
+      });
+      b.addEventListener("pointerleave", function () { b.style.setProperty("--bx", "0px"); b.style.setProperty("--by", "0px"); });
+    });
+  }
+
+  /* ---------- desafíos: girar con toque o teclado ---------- */
+  document.querySelectorAll(".flip").forEach(function (f) {
+    f.querySelector(".flip-btn").addEventListener("click", function () { f.classList.toggle("on"); });
+  });
+
+  /* ---------- simulador ---------- */
+  var presets = {
+    prudente:    { seed: 21, mu: 0.0042, sd: 0.016, name: "prudente" },
+    equilibrada: { seed: 34, mu: 0.0062, sd: 0.029, name: "equilibrada" },
+    atrevida:    { seed: 55, mu: 0.0095, sd: 0.056, name: "atrevida" }
+  };
+  function series(seed, mu, sd, common) {
+    var r = rng(seed), v = 100, a = [100];
+    for (var i = 0; i < 24; i++) { v *= 1 + mu + sd * (0.6 * common[i] + 0.4 * gauss(r)); a.push(v); }
+    return a;
+  }
+  var rc = rng(77), common = []; for (var ci = 0; ci < 24; ci++) common.push(gauss(rc));
+  var idxSeries = (function () { var r = rng(88), v = 100, a = [100]; for (var i = 0; i < 24; i++) { v *= 1 + 0.0075 + 0.042 * (0.8 * common[i] + 0.2 * gauss(r)); a.push(v); } return a; })();
+  function stats(a) {
+    var rets = [], peak = a[0], mdd = 0;
+    for (var i = 1; i < a.length; i++) { rets.push(a[i] / a[i - 1] - 1); peak = Math.max(peak, a[i]); mdd = Math.min(mdd, a[i] / peak - 1); }
+    var m = rets.reduce(function (s, x) { return s + x; }, 0) / rets.length;
+    var sd = Math.sqrt(rets.reduce(function (s, x) { return s + (x - m) * (x - m); }, 0) / (rets.length - 1));
+    return { ret: (a[a.length - 1] / a[0] - 1) * 100, vol: sd * Math.sqrt(12) * 100, mdd: mdd * 100 };
+  }
+  var X0 = 44, X1 = 590, Y0 = 16, Y1 = 248;
+  var pPort = document.getElementById("pPort"), pIdx = document.getElementById("pIdx"), pArea = document.getElementById("pArea"), pDot = document.getElementById("pDot"), gridG = document.getElementById("chartGrid");
+  var shown = { ret: 0, vol: 0, dd: 0, vs: 0 };
+  function drawSim(key) {
+    var p = presets[key], s = series(p.seed, p.mu, p.sd, common);
+    var all = s.concat(idxSeries), lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+    lo = Math.floor((lo - 3) / 10) * 10; hi = Math.ceil((hi + 3) / 10) * 10;
+    var sx = function (i) { return X0 + (i / 24) * (X1 - X0); }, sy = function (v) { return Y1 - (v - lo) / (hi - lo) * (Y1 - Y0); };
+    var g = "", step = (hi - lo) / 4;
+    for (var k = 0; k <= 4; k++) {
+      var v = lo + step * k, y = sy(v).toFixed(1);
+      g += '<line class="gl" x1="' + X0 + '" x2="' + X1 + '" y1="' + y + '" y2="' + y + '"/><text class="ax" x="' + (X0 - 8) + '" y="' + (+y + 4) + '" text-anchor="end">' + Math.round(v) + '</text>';
+    }
+    [0, 6, 12, 18, 24].forEach(function (mth) { g += '<text class="ax" x="' + sx(mth).toFixed(1) + '" y="270" text-anchor="middle">' + (mth === 0 ? "Inicio" : "Mes " + mth) + '</text>'; });
+    gridG.innerHTML = g;
+    var d = s.map(function (v, i) { return (i ? "L" : "M") + sx(i).toFixed(1) + " " + sy(v).toFixed(1); }).join("");
+    var di = idxSeries.map(function (v, i) { return (i ? "L" : "M") + sx(i).toFixed(1) + " " + sy(v).toFixed(1); }).join("");
+    pPort.setAttribute("d", d); pIdx.setAttribute("d", di);
+    pArea.setAttribute("d", d + "L" + X1 + " " + Y1 + "L" + X0 + " " + Y1 + "Z");
+    pDot.setAttribute("cx", sx(24)); pDot.setAttribute("cy", sy(s[24]));
+
+    var st = stats(s), si = stats(idxSeries), vs = st.ret - si.ret;
+    var to = { ret: st.ret, vol: st.vol, dd: st.mdd, vs: vs };
+    var paint = function () {
+      document.getElementById("mRet").textContent = (shown.ret >= 0 ? "+" : "−") + fmt(Math.abs(shown.ret), 1) + " %";
+      document.getElementById("mRet").className = shown.ret >= 0 ? "up" : "down";
+      document.getElementById("mVol").textContent = fmt(shown.vol, 1) + " %";
+      document.getElementById("mDd").textContent = "−" + fmt(Math.abs(shown.dd), 1) + " %";
+      var vsEl = document.getElementById("mVs");
+      vsEl.textContent = (shown.vs >= 0 ? "+" : "−") + fmt(Math.abs(shown.vs), 1) + " pp";
+      vsEl.className = shown.vs >= 0 ? "up" : "down";
+    };
+    var verdict = document.getElementById("verdict");
+    verdict.innerHTML = vs >= 0
+      ? "La cartera <strong>" + p.name + "</strong> terminó <strong>" + fmt(vs, 1) + " pp por encima</strong> del S&amp;P 500, pero mira su peor caída: <strong>−" + fmt(Math.abs(st.mdd), 1) + " %</strong>. ¿Habrías aguantado sin vender?"
+      : "La cartera <strong>" + p.name + "</strong> quedó <strong>" + fmt(Math.abs(vs), 1) + " pp por debajo</strong> del S&amp;P 500, con una peor caída de <strong>−" + fmt(Math.abs(st.mdd), 1) + " %</strong> frente al −" + fmt(Math.abs(si.mdd), 1) + " % del índice. Menos rentabilidad, menos sustos.";
+
+    if (hasGsap && !reduced) {
+      [pPort, pIdx].forEach(function (path, n) {
+        var len = path.getTotalLength();
+        gsap.fromTo(path, { strokeDasharray: len + " " + len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.6, ease: "power3.inOut", delay: n * 0.1,
+          onComplete: function () { if (n === 1) path.style.strokeDasharray = ""; } });
+      });
+      gsap.fromTo(pArea, { opacity: 0 }, { opacity: 1, duration: 1.2, delay: 0.6 });
+      gsap.fromTo(pDot, { scale: 0, transformOrigin: "center" }, { scale: 1, duration: 0.6, delay: 1.5, ease: "back.out(3)" });
+      gsap.to(shown, Object.assign({ duration: 1.4, ease: "power3.out", onUpdate: paint }, to));
+    } else { Object.assign(shown, to); paint(); }
+  }
+  var simStarted = false;
+  document.querySelectorAll(".preset").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".preset").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      drawSim(b.dataset.preset);
+    });
+  });
+  // Pinta el gráfico ya; si hay animación, lo vuelve a trazar cuando entra en pantalla
+  drawSim("equilibrada");
+  if (hasGsap && !reduced && typeof ScrollTrigger !== "undefined") {
+    ScrollTrigger.create({ trigger: "#chart", start: "top 80%", once: true, onEnter: function () { if (!simStarted) { simStarted = true; drawSim(document.querySelector('.preset[aria-pressed="true"]').dataset.preset); } } });
+  }
+
+  /* ---------- planes: facturación ---------- */
+  var billing = document.getElementById("billing"), pill = billing.querySelector(".pill");
+  function placePill() {
+    var on = billing.querySelector('[aria-pressed="true"]');
+    pill.style.width = on.offsetWidth + "px";
+    pill.style.transform = "translateX(" + (on.offsetLeft - 4) + "px)";
+  }
+  function setBilling(mode) {
+    billing.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.billing === mode ? "true" : "false"); });
+    placePill();
+    document.querySelectorAll(".price").forEach(function (p) {
+      var m = +p.dataset.m, y = +p.dataset.y, val = mode === "ano" ? y : m, el = p.querySelector(".p");
+      p.querySelector(".u").textContent = mode === "ano" ? "/año" : "/mes";
+      p.nextElementSibling.textContent = mode === "ano" ? "Equivale a " + fmt(y / 12, 2) + " € al mes" : "";
+      if (hasGsap && !reduced) {
+        var o = { v: parseFloat(el.textContent) || 0 };
+        gsap.to(o, { v: val, duration: 0.8, ease: "power3.out", onUpdate: function () { el.textContent = Math.round(o.v) + " €"; } });
+        gsap.fromTo(p, { rotateX: -60, opacity: 0.3, transformPerspective: 600 }, { rotateX: 0, opacity: 1, duration: 0.7, ease: "back.out(1.6)" });
+      } else el.textContent = val + " €";
+    });
+  }
+  billing.querySelectorAll("button").forEach(function (b) { b.addEventListener("click", function () { setBilling(b.dataset.billing); }); });
+  placePill();
+  addEventListener("resize", placePill);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placePill);
+
+  /* ---------- aviso ---------- */
+  var toast = document.getElementById("toast"), tt;
+  document.querySelectorAll(".js-signup").forEach(function (b) {
+    b.addEventListener("click", function () {
+      toast.textContent = "Esto es una maqueta: el alta al plan " + b.dataset.plan + " todavía no está disponible.";
+      toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("show"); }, 3200);
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var toast = document.getElementById("toast"), tt;
+  function say(msg) { toast.textContent = msg; toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("show"); }, 4200); }
+
+  /* ---------- documentos legales y contacto ---------- */
+  var legal = document.getElementById("legal"), legalTitle = document.getElementById("legalTitle");
+  var docNames = { aviso: "Aviso legal", privacidad: "Privacidad", condiciones: "Condiciones", cookies: "Cookies", contacto: "Contacto" };
+  function showDoc(doc) {
+    legalTitle.textContent = docNames[doc];
+    legal.querySelectorAll("article[data-doc]").forEach(function (a) { a.hidden = a.dataset.doc !== doc; });
+    legal.querySelectorAll(".legal-tabs button").forEach(function (b) { b.setAttribute("aria-current", String(b.dataset.doc === doc)); });
+    legal.querySelector(".legal-body").scrollTop = 0;
+  }
+  function openDoc(doc) {
+    showDoc(doc);
+    if (!legal.open) legal.showModal();
+    legal.querySelector('.legal-tabs [aria-current="true"]').focus();
+  }
+  document.querySelectorAll("[data-legal]").forEach(function (a) { a.addEventListener("click", function (ev) { ev.preventDefault(); openDoc(a.dataset.legal); }); });
+  legal.querySelectorAll(".legal-tabs button").forEach(function (b) { b.addEventListener("click", function () { showDoc(b.dataset.doc); }); });
+  legal.querySelector(".js-legal-close").addEventListener("click", function () { legal.close(); });
+  legal.addEventListener("click", function (ev) { if (ev.target === legal) legal.close(); });
+  if (docNames[location.hash.slice(1)]) openDoc(location.hash.slice(1));
+
+  var contactForm = document.getElementById("contactForm");
+  contactForm.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var err = document.getElementById("contactErr"), bad = null;
+    Array.prototype.forEach.call(contactForm.elements, function (f) {
+      if (!f.name) return;
+      var ok = f.checkValidity() && f.value.trim() !== "";
+      f.setAttribute("aria-invalid", String(!ok));
+      if (!ok && !bad) bad = f;
+    });
+    if (bad) {
+      err.textContent = bad.name === "e" && bad.value ? "Revisa el email: parece que le falta algo." : "Rellena los tres campos para poder responderte.";
+      bad.focus(); return;
+    }
+    err.textContent = ""; legal.close(); contactForm.reset();
+    say("Esto es una maqueta: el mensaje no se ha enviado todavía.");
+  });
+
+  /* ---------- asistente ---------- */
+  var INFO = [
+    "Eres el asistente de la web de CapitalZero. Responde SIEMPRE en español de España, en tono cercano y riguroso, sin hype, de forma breve (2 a 5 frases o una lista corta). Usa **negrita** solo para lo clave.",
+    "Qué es CapitalZero: una escuela de inversión online para jóvenes de 18 a 27 años que quieren aprender a invertir a largo plazo practicando con dinero virtual sobre empresas reales, junto a una comunidad con mentores. Objetivo: en 90 días construir y defender una primera cartera, compararla con el S&P 500 y decidir cuándo dar el paso con dinero real.",
+    "Cómo funciona: 1) Aprende: cursos por niveles, píldoras de 10 minutos, casos reales. 2) Practica: simulador con dinero virtual; cada módulo termina con un ejercicio. 3) Compárate: informe mensual frente al S&P 500, con el riesgo al lado de la rentabilidad.",
+    "Postura: el S&P 500 es la vara de medir del aprendizaje, no una promesa; CapitalZero NUNCA promete batir al mercado. Es independiente: no cobra comisiones de brókers ni vende productos financieros. Es formación, no asesoramiento.",
+    "Planes (IVA incluido, 30 días gratis con aviso antes del primer cobro y cancelación en un clic; pago anual con dos meses gratis): Starter 9 €/mes o 90 €/año (ruta de la primera semana, 5 cursos introductorios, simulador con 50.000 € virtuales, comunidad general, soporte por email). Pro 29 €/mes o 290 €/año, el recomendado (más de 50 cursos, simulador avanzado hasta 500.000 € virtuales, mentoría grupal mensual, desafíos con premios por mérito, informe mensual frente al S&P 500). Elite 99 €/mes o 990 €/año (todo Pro más tutoría formativa individual con un analista, llamada mensual de estrategia, acceso anticipado y comunidad VIP). La tutoría Elite es formación: no recomienda qué comprar o vender.",
+    "Desafíos de octubre 2026: Tech (cartera de cinco tecnológicas comparada con el Nasdaq 100), ESG (cartera sostenible) y Dividendos (cartera de rentas). Premios por mérito (gestión del riesgo, constancia) con bases publicadas. La clasificación premia constancia y gestión del riesgo, no solo la rentabilidad.",
+    "Artículos del blog: 'Cómo analizar un balance empresarial', 'Diversificación: tu mejor aliada' y 'Warren Buffett: lecciones de inversión'. Recomiéndalos cuando encajen.",
+    "Reglas: explica conceptos de inversión de forma educativa, pero nunca des recomendaciones personalizadas de compra o venta ni prometas rentabilidades; recuerda el riesgo cuando sea pertinente. No inventes datos que no estén aquí (métodos de pago, nombres de mentores, fechas...): si no lo sabes, dilo y sugiere escribir desde Contacto en el pie de página. Si preguntan algo ajeno a CapitalZero o a la inversión, redirige amablemente. Menciona los 30 días gratis cuando sea natural, sin presionar."
+  ].join("\n\n");
+  var FAQ = [
+    ["¿Qué incluye cada plan?", "Hay tres planes, todos con **30 días gratis**: **Starter** (9 €/mes) con la ruta de la primera semana, 5 cursos y simulador con 50.000 € virtuales; **Pro** (29 €/mes) con más de 50 cursos, mentoría grupal y un informe mensual frente al S&P 500; y **Elite** (99 €/mes), que añade una tutoría formativa individual con un analista. Pagando al año tienes dos meses gratis."],
+    ["¿Me ayudáis a batir al S&P 500?", "No te lo vamos a prometer: la mayoría de profesionales no lo consigue de forma sostenida. Lo que hacemos es enseñarte a **compararte con el S&P 500**, con tu riesgo al lado de tu rentabilidad, para que sepas si lo estás haciendo bien."],
+    ["Soy principiante, ¿por dónde empiezo?", "Empieza con los **30 días gratis** del plan Starter: la ruta de la primera semana son tareas de 10 minutos. Para leer algo ya, el artículo **Cómo analizar un balance empresarial** es un buen primer paso."],
+    ["¿La tutoría Elite es asesoramiento?", "No. Es **formación**: un analista te enseña a analizar y a revisar tu cartera de práctica con criterio propio, pero no te dice qué comprar o vender."]
+  ];
+
+  var btn = document.getElementById("czBtn"), heroCta = document.querySelector(".hero-cta");
+  if ("IntersectionObserver" in window && heroCta) {
+    new IntersectionObserver(function (es) { btn.classList.toggle("pre", es[0].isIntersecting || es[0].boundingClientRect.top > 0); }).observe(heroCta);
+  } else btn.classList.remove("pre");
+  var panel = document.getElementById("czChat"), msgs = document.getElementById("czMsgs"), form = document.getElementById("czForm");
+  var input = document.getElementById("czInput"), send = document.getElementById("czSend");
+  var turns = [], busy = false, ctl = null, started = false, sample = null, aiOff = false;
+  if (window.claude && window.claude.use) window.claude.use("sample").then(function (fn) { sample = fn; }).catch(function () {});
+
+  function esc(t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function fmt(t) {
+    var out = [], list = [];
+    esc(t).split("\n").forEach(function (line) {
+      var l = line.trim(), m = l.match(/^([-*•]|\d+[.)])\s+(.*)/);
+      if (m) { list.push("<li>" + m[2] + "</li>"); return; }
+      if (list.length) { out.push("<ul>" + list.join("") + "</ul>"); list = []; }
+      if (l) out.push("<p>" + l + "</p>");
+    });
+    if (list.length) out.push("<ul>" + list.join("") + "</ul>");
+    return out.join("").replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  }
+  function add(cls, text) {
+    var d = document.createElement("div"); d.className = "cz-msg " + cls;
+    if (cls.indexOf("bot") > -1) d.innerHTML = fmt(text); else d.textContent = text;
+    msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; return d;
+  }
+  function chips() {
+    var wrap = document.createElement("div"); wrap.className = "cz-chips";
+    FAQ.forEach(function (f) {
+      var c = document.createElement("button"); c.type = "button"; c.className = "cz-chip"; c.textContent = f[0];
+      c.onclick = function () { wrap.remove(); ask(f[0]); };
+      wrap.appendChild(c);
+    });
+    msgs.appendChild(wrap); msgs.scrollTop = msgs.scrollHeight;
+  }
+  function open() {
+    panel.hidden = false; btn.setAttribute("aria-expanded", "true");
+    if (!started) {
+      started = true;
+      add("bot", "Hola, soy el asistente de **CapitalZero**. Te ayudo con dudas sobre los planes, el simulador, los desafíos o cómo empezar. ¿Qué quieres saber?");
+      chips();
+    }
+    setTimeout(function () { input.focus(); }, 50);
+  }
+  function close() { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); btn.focus(); }
+  btn.onclick = function () { panel.hidden ? open() : close(); };
+  document.getElementById("czClose").onclick = close;
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !panel.hidden) close(); });
+  document.querySelectorAll(".js-chat-open").forEach(function (a) { a.addEventListener("click", function (ev) { ev.preventDefault(); open(); }); });
+
+  function setBusy(b) {
+    busy = b; send.classList.toggle("stop", b); send.setAttribute("aria-label", b ? "Detener" : "Enviar");
+    send.innerHTML = b ? '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10"/></svg>'
+                       : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  }
+  function faqAnswer(q) { for (var i = 0; i < FAQ.length; i++) if (FAQ[i][0] === q) return FAQ[i][1]; return null; }
+  function offline(q, bubble) {
+    var a = faqAnswer(q);
+    bubble.classList.remove("thinking");
+    bubble.innerHTML = fmt(a || "Ahora mismo no puedo responder a preguntas libres. Elige una de las preguntas frecuentes o escríbenos desde **Contacto**, en el pie de la página.");
+    if (!a) chips();
+    turns.push({ role: "assistant", content: bubble.textContent });
+  }
+  function ask(q) {
+    if (busy || !q.trim()) return;
+    add("user", q);
+    turns.push({ role: "user", content: q });
+    if (turns.length > 16) turns = turns.slice(-16);
+    while (turns.length && turns[0].role !== "user") turns.shift();
+    var bubble = add("bot thinking", "Pensando...");
+    if (!sample || aiOff) { offline(q, bubble); return; }
+    setBusy(true); ctl = new AbortController();
+    sample([{ role: "user", content: INFO }].concat(turns), {
+      modelTier: "quick", cache: false, signal: ctl.signal,
+      onText: function (u) { bubble.classList.remove("thinking"); bubble.innerHTML = fmt(u.text); msgs.scrollTop = msgs.scrollHeight; }
+    }).then(function (r) {
+      bubble.innerHTML = fmt(r.text); turns.push({ role: "assistant", content: r.text });
+    }).catch(function (e) {
+      var code = e && e.code;
+      bubble.classList.remove("thinking");
+      if (code === "cancelled") {
+        if (e.text) { bubble.innerHTML = fmt(e.text); turns.push({ role: "assistant", content: e.text }); }
+        else { bubble.remove(); turns.pop(); }
+        return;
+      }
+      if (["not_granted", "sampling_disabled", "not_declared", "capability_disabled", "capability_removed"].indexOf(code) > -1) { aiOff = true; offline(q, bubble); return; }
+      if (e && e.text && code !== "refused") bubble.innerHTML = fmt(e.text); else bubble.remove();
+      turns.pop();
+      add("note", code === "rate_limited" ? "Demasiadas preguntas seguidas. Espera un momento y vuelve a intentarlo."
+        : code === "session_expired" ? "Tu sesión ha caducado. Vuelve a iniciar sesión para seguir."
+        : "No he podido responder. Inténtalo de nuevo.");
+    }).finally(function () { setBusy(false); ctl = null; });
+  }
+  form.onsubmit = function (ev) {
+    ev.preventDefault();
+    if (busy) { if (ctl) ctl.abort(); return; }
+    var q = input.value; input.value = ""; input.style.height = ""; ask(q);
+  };
+  input.addEventListener("keydown", function (ev) { if (ev.key === "Enter" && !ev.shiftKey) { ev.preventDefault(); form.requestSubmit(); } });
+  input.addEventListener("input", function () { input.style.height = ""; input.style.height = Math.min(input.scrollHeight, 100) + "px"; });
+})();
+</script>
+
+</body>
+</html>
