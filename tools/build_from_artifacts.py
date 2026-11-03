@@ -8,7 +8,7 @@ pages = {  # artifact id: (source file, site path)
  "J8PZRajXv1EKYyFtKAAVT4": ("leccion.html", "/leccion/"),
  "L2M1kTg8fszpcpUsK77tgV": ("quienes-somos.html", "/quienes-somos/"),
 }
-HEAD = '<!DOCTYPE html>\n<html lang="es">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">\n'
+HEAD = '<!DOCTYPE html>\n<html lang="es">\n<head>\n<!-- Google Tag Manager -->\n<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MPFWSC4R"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag(\'js\', new Date());\n</script>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">\n'
 for aid,(src,path) in pages.items():
     h=open(os.path.join(SRC,src),encoding="utf-8").read()
     # internal links: same tab, site-relative
