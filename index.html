@@ -1120,6 +1120,16 @@ body:has(.legal[open]) { overflow: hidden; }
   <div class="cz-foot">Asistente con IA. Información educativa, no asesoramiento financiero.</div>
 </div>
 
+<dialog id="trial-demo" aria-labelledby="trial-title" style="max-width:min(28rem,calc(100% - 2rem));padding:1.5rem;color:#15364f;background:#fff">
+  <button type="button" class="btn btn-ghost" data-trial-close>Cerrar</button>
+  <h2 id="trial-title">Prueba de <span id="trial-plan"></span></h2>
+  <p>Demo académica. La solicitud se simula y no crea una cuenta ni genera cobros.</p>
+  <form id="trial-form">
+    <p><label><input type="checkbox" name="confirm_demo" required> Quiero simular la solicitud de prueba.</label></p>
+    <button type="submit" class="btn">Confirmar solicitud de demo</button>
+  </form>
+  <p id="trial-confirmation" tabindex="-1" hidden>Solicitud de demo completada.</p>
+</dialog>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1630,13 +1640,54 @@ body:has(.legal[open]) { overflow: hidden; }
   addEventListener("resize", placePill);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(placePill);
 
-  /* ---------- aviso ---------- */
-  var toast = document.getElementById("toast"), tt;
-  document.querySelectorAll(".js-signup").forEach(function (b) {
-    b.addEventListener("click", function () {
-      toast.textContent = "Esto es una maqueta: el alta al plan " + b.dataset.plan + " todavía no está disponible.";
-      toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("show"); }, 3200);
+  var trial = document.getElementById("trial-demo");
+  var form = document.getElementById("trial-form");
+  var confirmation = document.getElementById("trial-confirmation");
+  var planLabel = document.getElementById("trial-plan");
+  var plan;
+  var trigger;
+  var submitted = false;
+
+  function trackTrial(eventName) {
+    try {
+      if (localStorage.getItem("cz_consent") !== "granted") return;
+      if (typeof window.gtag === "function") {
+        window.gtag("event", eventName, {
+          send_to: "G-RT4VM4F7YQ",
+          plan: plan,
+          trial_mode: "demo"
+        });
+      }
+    } catch (error) {
+      // La demo sigue funcionando si el almacenamiento o la analítica no están disponibles.
+    }
+  }
+
+  document.querySelectorAll(".js-signup").forEach(function (button) {
+    button.addEventListener("click", function () {
+      trigger = button;
+      plan = button.dataset.plan.toLowerCase();
+      planLabel.textContent = button.dataset.plan;
+      submitted = false;
+      form.reset();
+      form.hidden = false;
+      confirmation.hidden = true;
+      trial.showModal();
+      trackTrial("trial_cta_click");
     });
+  });
+
+  trial.addEventListener("close", function () { trigger.focus(); });
+  trial.querySelector("[data-trial-close]").addEventListener("click", function () { trial.close(); });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (submitted || !form.reportValidity()) return;
+    submitted = true;
+    form.hidden = true;
+    confirmation.hidden = false;
+    confirmation.focus();
+    trackTrial("generate_lead");
   });
 })();
 </script>
